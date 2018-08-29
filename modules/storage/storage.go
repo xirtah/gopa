@@ -17,13 +17,13 @@ limitations under the License.
 package storage
 
 import (
-	"github.com/infinitbyte/gopa/core/config"
-	"github.com/infinitbyte/gopa/core/errors"
-	"github.com/infinitbyte/gopa/core/global"
-	"github.com/infinitbyte/gopa/core/index"
-	"github.com/infinitbyte/gopa/core/persist"
-	"github.com/infinitbyte/gopa/modules/storage/boltdb"
-	"github.com/infinitbyte/gopa/modules/storage/elastic"
+	"github.com/xirtah/gopa/core/config"
+	"github.com/xirtah/gopa/core/errors"
+	"github.com/xirtah/gopa/core/global"
+	"github.com/xirtah/gopa/core/index"
+	"github.com/xirtah/gopa/core/persist"
+	"github.com/xirtah/gopa/modules/storage/boltdb"
+	"github.com/xirtah/gopa/modules/storage/elastic"
 	"os"
 	"path"
 )

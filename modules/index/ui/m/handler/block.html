@@ -1,8 +1,8 @@
 <%! func Block(w io.Writer,r *http.Request,q string,filter string,from int,size int,config *common.UIConfig, response *index.SearchResponse) error %>
 <%% import "net/http" %%>
-<%% import "github.com/infinitbyte/gopa/modules/index/ui/common" %%>
-<%% import "github.com/infinitbyte/gopa/core/index" %%>
-<%% import "github.com/infinitbyte/gopa/core/util" %%>
+<%% import "github.com/xirtah/gopa/modules/index/ui/common" %%>
+<%% import "github.com/xirtah/gopa/core/index" %%>
+<%% import "github.com/xirtah/gopa/core/util" %%>
 <%% import "fmt" %%>
 
 <% if len(response.Hits.Hits)>0 { %>

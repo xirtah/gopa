@@ -17,8 +17,8 @@ limitations under the License.
 package joint
 
 import (
-	"github.com/infinitbyte/gopa/core/errors"
-	"github.com/infinitbyte/gopa/core/model"
+	"github.com/xirtah/gopa/core/errors"
+	"github.com/xirtah/gopa/core/model"
 	"github.com/jbowles/nlpt-detect"
 )
 

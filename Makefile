@@ -113,12 +113,12 @@ restore-generated-file:
 
 update-ui:
 	@echo "generate static files"
-	@$(GO) get github.com/infinitbyte/esc
+	@$(GO) get github.com/xirtah/esc
 	@(cd static&& esc -ignore="static.go|build_static.sh|.DS_Store" -o static.go -pkg static ../static )
 
 update-template-ui:
 	@echo "generate UI pages"
-	@$(GO) get github.com/infinitbyte/ego/cmd/ego
+	@$(GO) get github.com/xirtah/ego/cmd/ego
 	@cd modules/ && ego
 	@cd plugins/ && ego
 
@@ -243,5 +243,5 @@ cyclo:
 	gocyclo -top 10 -over 12 $$(ls -d */ | grep -v vendor)
 
 benchmarks:
-	go test github.com/infinitbyte/gopa/core/util -benchtime=1s -bench ^Benchmark -run ^$
-	go test github.com/infinitbyte/gopa//modules/crawler/pipe -benchtime=1s -bench  ^Benchmark -run ^$
+	go test github.com/xirtah/gopa/core/util -benchtime=1s -bench ^Benchmark -run ^$
+	go test github.com/xirtah/gopa//modules/crawler/pipe -benchtime=1s -bench  ^Benchmark -run ^$

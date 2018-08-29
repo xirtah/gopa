@@ -1,10 +1,10 @@
 package elastic
 
 import (
-	"github.com/infinitbyte/gopa/core/errors"
-	"github.com/infinitbyte/gopa/core/index"
-	api "github.com/infinitbyte/gopa/core/persist"
-	"github.com/infinitbyte/gopa/core/util"
+	"github.com/xirtah/gopa/core/errors"
+	"github.com/xirtah/gopa/core/index"
+	api "github.com/xirtah/gopa/core/persist"
+	"github.com/xirtah/gopa/core/util"
 )
 
 type ElasticORM struct {

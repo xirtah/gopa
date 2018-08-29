@@ -17,7 +17,7 @@ limitations under the License.
 package common
 
 import (
-	core "github.com/infinitbyte/gopa/core/index"
+	core "github.com/xirtah/gopa/core/index"
 )
 
 type UIConfig struct {

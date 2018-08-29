@@ -5,8 +5,8 @@ package auth
 
 import (
 	"fmt"
-	"github.com/infinitbyte/gopa/core/util"
-	"github.com/infinitbyte/gopa/modules/ui/common"
+	"github.com/xirtah/gopa/core/util"
+	"github.com/xirtah/gopa/modules/ui/common"
 	"html"
 	"io"
 	"net/http"

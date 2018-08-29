@@ -18,10 +18,10 @@ package http
 
 import (
 	log "github.com/cihub/seelog"
-	. "github.com/infinitbyte/gopa/core/http"
-	"github.com/infinitbyte/gopa/core/model"
-	"github.com/infinitbyte/gopa/core/persist"
-	"github.com/infinitbyte/gopa/modules/config"
+	. "github.com/xirtah/gopa/core/http"
+	"github.com/xirtah/gopa/core/model"
+	"github.com/xirtah/gopa/core/persist"
+	"github.com/xirtah/gopa/modules/config"
 	_ "github.com/jmoiron/jsonq"
 	"github.com/julienschmidt/httprouter"
 	"net/http"

@@ -7,7 +7,7 @@ package util
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/infinitbyte/gopa/core/errors"
+	"github.com/xirtah/gopa/core/errors"
 	"strings"
 )
 

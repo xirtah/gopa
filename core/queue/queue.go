@@ -18,7 +18,7 @@ package queue
 
 import (
 	"errors"
-	"github.com/infinitbyte/gopa/core/stats"
+	"github.com/xirtah/gopa/core/stats"
 	"time"
 )
 

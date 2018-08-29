@@ -3,8 +3,8 @@ package tasks
 import (
 	"bytes"
 	"fmt"
-	"github.com/infinitbyte/gopa/core/model"
-	"github.com/infinitbyte/gopa/core/util"
+	"github.com/xirtah/gopa/core/model"
+	"github.com/xirtah/gopa/core/util"
 )
 
 // GetDomainRow return html blocks to display a domain info

@@ -3,7 +3,7 @@
 GOPA, A Spider Written in Go.
 
 [![Travis](https://travis-ci.org/infinitbyte/gopa.svg?branch=master)](https://travis-ci.org/infinitbyte/gopa)
-[![Go Report Card](https://goreportcard.com/badge/github.com/infinitbyte/gopa)](https://goreportcard.com/report/github.com/infinitbyte/gopa)
+[![Go Report Card](https://goreportcard.com/badge/github.com/xirtah/gopa)](https://goreportcard.com/report/github.com/xirtah/gopa)
 [![Join the chat at https://gitter.im/infinitbyte/gopa](https://badges.gitter.im/infinitbyte/gopa.svg)](https://gitter.im/infinitbyte/gopa?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Finfinitbyte%2Fgopa.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Finfinitbyte%2Fgopa?ref=badge_shield)
 
@@ -47,14 +47,14 @@ First of all, get it, two opinions: download the pre-built package or compile it
 
 #### Download Pre Built Package
 
-Go to [Release](https://github.com/infinitbyte/gopa/releases) or [Snapshot](https://github.com/infinitbyte/gopa-snapshot/releases) page, download the right package for your platform.
+Go to [Release](https://github.com/xirtah/gopa/releases) or [Snapshot](https://github.com/xirtah/gopa-snapshot/releases) page, download the right package for your platform.
 
 _Note: Darwin is for Mac_
 
 #### Compile The Package Manually
 
 - Mac/Linux: Run `make build` to build the Gopa. <br/>
-- Windows:  Checkout this wiki page - [How to build GOPA on windows](https://github.com/infinitbyte/gopa/wiki/How-to-build-GOPA-on-windows).
+- Windows:  Checkout this wiki page - [How to build GOPA on windows](https://github.com/xirtah/gopa/wiki/How-to-build-GOPA-on-windows).
 
 So far, we have:
 
@@ -373,4 +373,4 @@ welcome! let's make it better.
 
 License
 =======
-Released under the [Apache License, Version 2.0](https://github.com/infinitbyte/gopa/blob/master/LICENSE) .
+Released under the [Apache License, Version 2.0](https://github.com/xirtah/gopa/blob/master/LICENSE) .

@@ -19,12 +19,12 @@ package websocket
 import (
 	"encoding/json"
 	log "github.com/cihub/seelog"
-	"github.com/infinitbyte/gopa/core/global"
-	logging "github.com/infinitbyte/gopa/core/logger"
-	"github.com/infinitbyte/gopa/core/model"
-	"github.com/infinitbyte/gopa/core/queue"
-	"github.com/infinitbyte/gopa/core/util"
-	"github.com/infinitbyte/gopa/modules/config"
+	"github.com/xirtah/gopa/core/global"
+	logging "github.com/xirtah/gopa/core/logger"
+	"github.com/xirtah/gopa/core/model"
+	"github.com/xirtah/gopa/core/queue"
+	"github.com/xirtah/gopa/core/util"
+	"github.com/xirtah/gopa/modules/config"
 	"strings"
 )
 

@@ -18,7 +18,7 @@ package global
 
 import (
 	"errors"
-	"github.com/infinitbyte/gopa/core/env"
+	"github.com/xirtah/gopa/core/env"
 	"runtime"
 	"sync"
 )

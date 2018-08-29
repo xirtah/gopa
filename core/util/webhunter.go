@@ -29,7 +29,7 @@ import (
 	"crypto/tls"
 	"fmt"
 	log "github.com/cihub/seelog"
-	"github.com/infinitbyte/gopa/core/errors"
+	"github.com/xirtah/gopa/core/errors"
 	"golang.org/x/net/proxy"
 )
 
@@ -176,7 +176,7 @@ type Result struct {
 }
 
 //TODO align gopa version
-const userAgent = "Mozilla/5.0 (compatible; gopa/1.0; +http://github.com/infinitbyte/gopa)"
+const userAgent = "Mozilla/5.0 (compatible; gopa/1.0; +http://github.com/xirtah/gopa)"
 
 /**
 proxyStr, eg: "socks5://127.0.0.1:9150"

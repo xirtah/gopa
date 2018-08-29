@@ -2,9 +2,9 @@ package model
 
 import (
 	log "github.com/cihub/seelog"
-	"github.com/infinitbyte/gopa/core/errors"
-	"github.com/infinitbyte/gopa/core/persist"
-	"github.com/infinitbyte/gopa/core/util"
+	"github.com/xirtah/gopa/core/errors"
+	"github.com/xirtah/gopa/core/persist"
+	"github.com/xirtah/gopa/core/util"
 	"time"
 )
 

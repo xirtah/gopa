@@ -17,10 +17,10 @@ limitations under the License.
 package admin
 
 import (
-	api "github.com/infinitbyte/gopa/core/http"
-	"github.com/infinitbyte/gopa/core/model"
-	"github.com/infinitbyte/gopa/modules/ui/admin/ajax"
-	"github.com/infinitbyte/gopa/modules/ui/common"
+	api "github.com/xirtah/gopa/core/http"
+	"github.com/xirtah/gopa/core/model"
+	"github.com/xirtah/gopa/modules/ui/admin/ajax"
+	"github.com/xirtah/gopa/modules/ui/common"
 )
 
 // InitUI register ui handlers

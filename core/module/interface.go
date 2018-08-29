@@ -17,7 +17,7 @@ limitations under the License.
 package module
 
 import (
-	"github.com/infinitbyte/gopa/core/config"
+	"github.com/xirtah/gopa/core/config"
 )
 
 // Module defines system level module structure

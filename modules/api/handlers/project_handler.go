@@ -18,7 +18,7 @@ package http
 
 import (
 	"encoding/json"
-	"github.com/infinitbyte/gopa/core/model"
+	"github.com/xirtah/gopa/core/model"
 	"github.com/julienschmidt/httprouter"
 	"net/http"
 	"strconv"

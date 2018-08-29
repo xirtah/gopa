@@ -18,9 +18,9 @@ package joint
 
 import (
 	log "github.com/cihub/seelog"
-	"github.com/infinitbyte/gopa/core/global"
-	"github.com/infinitbyte/gopa/core/model"
-	"github.com/infinitbyte/gopa/core/util"
+	"github.com/xirtah/gopa/core/global"
+	"github.com/xirtah/gopa/core/model"
+	"github.com/xirtah/gopa/core/util"
 	"regexp"
 	"strings"
 	"sync"

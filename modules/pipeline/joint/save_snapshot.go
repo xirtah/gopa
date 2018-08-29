@@ -19,11 +19,11 @@ package joint
 import (
 	"fmt"
 	log "github.com/cihub/seelog"
-	"github.com/infinitbyte/gopa/core/errors"
-	"github.com/infinitbyte/gopa/core/model"
-	"github.com/infinitbyte/gopa/core/persist"
-	"github.com/infinitbyte/gopa/core/stats"
-	"github.com/infinitbyte/gopa/modules/config"
+	"github.com/xirtah/gopa/core/errors"
+	"github.com/xirtah/gopa/core/model"
+	"github.com/xirtah/gopa/core/persist"
+	"github.com/xirtah/gopa/core/stats"
+	"github.com/xirtah/gopa/modules/config"
 )
 
 type SaveSnapshotToDBJoint struct {

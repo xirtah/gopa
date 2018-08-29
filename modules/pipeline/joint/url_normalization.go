@@ -19,9 +19,9 @@ package joint
 import (
 	"github.com/PuerkitoBio/purell"
 	log "github.com/cihub/seelog"
-	"github.com/infinitbyte/gopa/core/errors"
-	"github.com/infinitbyte/gopa/core/model"
-	"github.com/infinitbyte/gopa/core/util"
+	"github.com/xirtah/gopa/core/errors"
+	"github.com/xirtah/gopa/core/model"
+	"github.com/xirtah/gopa/core/util"
 	u "net/url"
 	"path"
 	"sort"

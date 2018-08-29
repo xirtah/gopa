@@ -19,8 +19,8 @@ package joint
 import (
 	"fmt"
 	log "github.com/cihub/seelog"
-	"github.com/infinitbyte/gopa/core/errors"
-	"github.com/infinitbyte/gopa/core/model"
+	"github.com/xirtah/gopa/core/errors"
+	"github.com/xirtah/gopa/core/model"
 )
 
 // TaskDeduplicationJoint is used to find whether the task already in the database

@@ -17,7 +17,7 @@ limitations under the License.
 package http
 
 import (
-	"github.com/infinitbyte/gopa/core/model"
+	"github.com/xirtah/gopa/core/model"
 	"github.com/julienschmidt/httprouter"
 	"net/http"
 

@@ -21,9 +21,9 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	log "github.com/cihub/seelog"
-	"github.com/infinitbyte/gopa/core/model"
-	"github.com/infinitbyte/gopa/core/queue"
-	"github.com/infinitbyte/gopa/modules/config"
+	"github.com/xirtah/gopa/core/model"
+	"github.com/xirtah/gopa/core/queue"
+	"github.com/xirtah/gopa/modules/config"
 )
 
 // IndexJoint is used to send snapshot and task info into index

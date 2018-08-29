@@ -18,9 +18,9 @@ package model
 
 import (
 	"fmt"
-	"github.com/infinitbyte/gopa/core/env"
-	"github.com/infinitbyte/gopa/core/global"
-	"github.com/infinitbyte/gopa/core/util"
+	"github.com/xirtah/gopa/core/env"
+	"github.com/xirtah/gopa/core/global"
+	"github.com/xirtah/gopa/core/util"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )

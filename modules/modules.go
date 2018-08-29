@@ -17,18 +17,18 @@ limitations under the License.
 package modules
 
 import (
-	"github.com/infinitbyte/gopa/core/module"
-	"github.com/infinitbyte/gopa/modules/api"
-	"github.com/infinitbyte/gopa/modules/cluster"
-	"github.com/infinitbyte/gopa/modules/dispatch"
-	"github.com/infinitbyte/gopa/modules/filter"
-	"github.com/infinitbyte/gopa/modules/index"
-	"github.com/infinitbyte/gopa/modules/persist"
-	"github.com/infinitbyte/gopa/modules/pipeline"
-	"github.com/infinitbyte/gopa/modules/queue"
-	"github.com/infinitbyte/gopa/modules/stats"
-	"github.com/infinitbyte/gopa/modules/storage"
-	"github.com/infinitbyte/gopa/modules/ui"
+	"github.com/xirtah/gopa/core/module"
+	"github.com/xirtah/gopa/modules/api"
+	"github.com/xirtah/gopa/modules/cluster"
+	"github.com/xirtah/gopa/modules/dispatch"
+	"github.com/xirtah/gopa/modules/filter"
+	"github.com/xirtah/gopa/modules/index"
+	"github.com/xirtah/gopa/modules/persist"
+	"github.com/xirtah/gopa/modules/pipeline"
+	"github.com/xirtah/gopa/modules/queue"
+	"github.com/xirtah/gopa/modules/stats"
+	"github.com/xirtah/gopa/modules/storage"
+	"github.com/xirtah/gopa/modules/ui"
 )
 
 // Register is where modules are registered

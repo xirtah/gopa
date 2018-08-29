@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 	log "github.com/cihub/seelog"
-	"github.com/infinitbyte/gopa/core/util"
+	"github.com/xirtah/gopa/core/util"
 	"io/ioutil"
 	"path"
 )

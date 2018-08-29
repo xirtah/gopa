@@ -5,7 +5,7 @@ package console
 
 import (
 	"fmt"
-	"github.com/infinitbyte/gopa/modules/ui/common"
+	"github.com/xirtah/gopa/modules/ui/common"
 	"io"
 	"net/http"
 )

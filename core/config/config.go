@@ -10,7 +10,7 @@ import (
 	"github.com/elastic/go-ucfg/cfgutil"
 	cfgflag "github.com/elastic/go-ucfg/flag"
 	"github.com/elastic/go-ucfg/yaml"
-	"github.com/infinitbyte/gopa/core/util/file"
+	"github.com/xirtah/gopa/core/util/file"
 	"os"
 	"path/filepath"
 	"runtime"

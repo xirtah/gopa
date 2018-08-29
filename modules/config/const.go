@@ -1,9 +1,9 @@
 package config
 
 import (
-	"github.com/infinitbyte/gopa/core/errors"
-	"github.com/infinitbyte/gopa/core/filter"
-	"github.com/infinitbyte/gopa/core/global"
+	"github.com/xirtah/gopa/core/errors"
+	"github.com/xirtah/gopa/core/filter"
+	"github.com/xirtah/gopa/core/global"
 )
 
 const (

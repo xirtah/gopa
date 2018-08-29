@@ -17,9 +17,9 @@ limitations under the License.
 package model
 
 import (
-	"github.com/infinitbyte/gopa/core/errors"
-	"github.com/infinitbyte/gopa/core/persist"
-	"github.com/infinitbyte/gopa/core/util"
+	"github.com/xirtah/gopa/core/errors"
+	"github.com/xirtah/gopa/core/persist"
+	"github.com/xirtah/gopa/core/util"
 	"regexp"
 	"time"
 )

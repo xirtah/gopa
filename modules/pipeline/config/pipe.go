@@ -1,9 +1,9 @@
 package config
 
 import (
-	"github.com/infinitbyte/gopa/core/model"
-	"github.com/infinitbyte/gopa/core/util"
-	"github.com/infinitbyte/gopa/modules/config"
+	"github.com/xirtah/gopa/core/model"
+	"github.com/xirtah/gopa/core/util"
+	"github.com/xirtah/gopa/modules/config"
 )
 
 // PipeConfig defines crawler related configs

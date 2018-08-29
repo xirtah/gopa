@@ -3,11 +3,11 @@ package queue
 import (
 	"errors"
 	log "github.com/cihub/seelog"
-	. "github.com/infinitbyte/gopa/core/config"
-	"github.com/infinitbyte/gopa/core/global"
-	. "github.com/infinitbyte/gopa/core/queue"
-	"github.com/infinitbyte/gopa/modules/config"
-	. "github.com/infinitbyte/gopa/modules/queue/disk_queue"
+	. "github.com/xirtah/gopa/core/config"
+	"github.com/xirtah/gopa/core/global"
+	. "github.com/xirtah/gopa/core/queue"
+	"github.com/xirtah/gopa/modules/config"
+	. "github.com/xirtah/gopa/modules/queue/disk_queue"
 	"os"
 	"time"
 )

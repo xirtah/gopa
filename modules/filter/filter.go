@@ -2,11 +2,11 @@ package filter
 
 import (
 	log "github.com/cihub/seelog"
-	. "github.com/infinitbyte/gopa/core/config"
-	"github.com/infinitbyte/gopa/core/filter"
-	. "github.com/infinitbyte/gopa/core/filter"
-	"github.com/infinitbyte/gopa/modules/config"
-	"github.com/infinitbyte/gopa/modules/filter/impl"
+	. "github.com/xirtah/gopa/core/config"
+	"github.com/xirtah/gopa/core/filter"
+	. "github.com/xirtah/gopa/core/filter"
+	"github.com/xirtah/gopa/modules/config"
+	"github.com/xirtah/gopa/modules/filter/impl"
 	"sync"
 )
 

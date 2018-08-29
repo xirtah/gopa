@@ -3,10 +3,10 @@ package stats
 import (
 	"encoding/json"
 	log "github.com/cihub/seelog"
-	. "github.com/infinitbyte/gopa/core/config"
-	"github.com/infinitbyte/gopa/core/persist"
-	"github.com/infinitbyte/gopa/core/stats"
-	"github.com/infinitbyte/gopa/modules/config"
+	. "github.com/xirtah/gopa/core/config"
+	"github.com/xirtah/gopa/core/persist"
+	"github.com/xirtah/gopa/core/stats"
+	"github.com/xirtah/gopa/modules/config"
 	"runtime"
 	"sync"
 )

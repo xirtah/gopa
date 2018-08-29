@@ -5,10 +5,10 @@ package tasks
 
 import (
 	"fmt"
-	api "github.com/infinitbyte/gopa/core/http"
-	"github.com/infinitbyte/gopa/core/i18n"
-	"github.com/infinitbyte/gopa/core/model"
-	"github.com/infinitbyte/gopa/modules/ui/common"
+	api "github.com/xirtah/gopa/core/http"
+	"github.com/xirtah/gopa/core/i18n"
+	"github.com/xirtah/gopa/core/model"
+	"github.com/xirtah/gopa/modules/ui/common"
 	"html"
 	"io"
 	"net/http"

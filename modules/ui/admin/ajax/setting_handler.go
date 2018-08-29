@@ -19,9 +19,9 @@ package ajax
 import (
 	"encoding/json"
 	log "github.com/cihub/seelog"
-	"github.com/infinitbyte/gopa/core/config"
-	api "github.com/infinitbyte/gopa/core/http"
-	logging "github.com/infinitbyte/gopa/core/logger"
+	"github.com/xirtah/gopa/core/config"
+	api "github.com/xirtah/gopa/core/http"
+	logging "github.com/xirtah/gopa/core/logger"
 	"net/http"
 )
 

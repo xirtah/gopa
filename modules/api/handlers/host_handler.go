@@ -18,8 +18,8 @@ package http
 
 import (
 	"encoding/json"
-	api "github.com/infinitbyte/gopa/core/http"
-	"github.com/infinitbyte/gopa/core/model"
+	api "github.com/xirtah/gopa/core/http"
+	"github.com/xirtah/gopa/core/model"
 	"github.com/julienschmidt/httprouter"
 	"net/http"
 	"strconv"

@@ -17,9 +17,9 @@ limitations under the License.
 package http
 
 import (
-	"github.com/infinitbyte/gopa/core/queue"
-	"github.com/infinitbyte/gopa/core/util"
-	"github.com/infinitbyte/gopa/modules/config"
+	"github.com/xirtah/gopa/core/queue"
+	"github.com/xirtah/gopa/core/util"
+	"github.com/xirtah/gopa/modules/config"
 	"net/http"
 )
 

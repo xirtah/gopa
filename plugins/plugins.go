@@ -17,9 +17,9 @@ limitations under the License.
 package plugins
 
 import (
-	"github.com/infinitbyte/gopa/core/module"
-	"github.com/infinitbyte/gopa/plugins/service_chrome"
-	"github.com/infinitbyte/gopa/plugins/tools_generator"
+	"github.com/xirtah/gopa/core/module"
+	"github.com/xirtah/gopa/plugins/service_chrome"
+	"github.com/xirtah/gopa/plugins/tools_generator"
 )
 
 func Register() {

@@ -2,11 +2,11 @@ package tools_generator
 
 import (
 	log "github.com/cihub/seelog"
-	. "github.com/infinitbyte/gopa/core/config"
-	"github.com/infinitbyte/gopa/core/model"
-	"github.com/infinitbyte/gopa/core/queue"
-	"github.com/infinitbyte/gopa/core/util"
-	"github.com/infinitbyte/gopa/modules/config"
+	. "github.com/xirtah/gopa/core/config"
+	"github.com/xirtah/gopa/core/model"
+	"github.com/xirtah/gopa/core/queue"
+	"github.com/xirtah/gopa/core/util"
+	"github.com/xirtah/gopa/modules/config"
 	"time"
 )
 

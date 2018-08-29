@@ -17,9 +17,9 @@ limitations under the License.
 package joint
 
 import (
-	"github.com/infinitbyte/gopa/core/config"
-	"github.com/infinitbyte/gopa/core/model"
-	"github.com/infinitbyte/gopa/core/util"
+	"github.com/xirtah/gopa/core/config"
+	"github.com/xirtah/gopa/core/model"
+	"github.com/xirtah/gopa/core/util"
 )
 
 // UrlFilterJoint used to validate urls, include host,path,file and file extension

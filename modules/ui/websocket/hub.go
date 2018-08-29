@@ -6,10 +6,10 @@ package websocket
 
 import (
 	"encoding/json"
-	"github.com/infinitbyte/gopa/core/env"
-	"github.com/infinitbyte/gopa/core/global"
-	"github.com/infinitbyte/gopa/core/logger"
-	"github.com/infinitbyte/gopa/core/stats"
+	"github.com/xirtah/gopa/core/env"
+	"github.com/xirtah/gopa/core/global"
+	"github.com/xirtah/gopa/core/logger"
+	"github.com/xirtah/gopa/core/stats"
 	"strings"
 	"time"
 )

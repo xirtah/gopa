@@ -18,7 +18,7 @@ package joint
 
 import (
 	"fmt"
-	"github.com/infinitbyte/gopa/core/model"
+	"github.com/xirtah/gopa/core/model"
 	"github.com/stretchr/testify/assert"
 	"testing"
 	"time"

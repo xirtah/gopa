@@ -3,7 +3,7 @@ package persist
 import (
 	"fmt"
 	log "github.com/cihub/seelog"
-	api "github.com/infinitbyte/gopa/core/persist"
+	api "github.com/xirtah/gopa/core/persist"
 	"github.com/jinzhu/gorm"
 	"sync"
 )
