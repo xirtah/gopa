@@ -17,15 +17,16 @@ limitations under the License.
 package joint
 
 import (
+	u "net/url"
+	"path"
+	"sort"
+	"strings"
+
 	"github.com/PuerkitoBio/purell"
 	log "github.com/cihub/seelog"
 	"github.com/xirtah/gopa/core/errors"
 	"github.com/xirtah/gopa/core/model"
 	"github.com/xirtah/gopa/core/util"
-	u "net/url"
-	"path"
-	"sort"
-	"strings"
 )
 
 // UrlNormalizationJoint used to cleanup url and do normalization
@@ -183,24 +184,15 @@ func (joint UrlNormalizationJoint) Process(context *model.Context) error {
 	////resolve host specific filter
 	if !joint.GetBool(followAllDomain, false) && joint.GetBool(followSubDomain, true) && currentURI != nil && referenceURI != nil {
 		log.Tracef("try to check host rule, %s vs %s", referenceURI.Host, currentURI.Host)
-		if strings.Contains(currentURI.Host, ".") && strings.Contains(referenceURI.Host, ".") {
-			ref := strings.Split(referenceURI.Host, ".")
-			cur := strings.Split(currentURI.Host, ".")
 
-			log.Tracef("%s vs %s , %s vs %s ", ref[len(ref)-1], cur[len(cur)-1], ref[len(ref)-2], cur[len(cur)-2])
-
-			if !(ref[len(ref)-1] == cur[len(cur)-1] && ref[len(ref)-2] == cur[len(cur)-2]) {
-				log.Debug("host mismatch,", referenceURI.Host, " vs ", currentURI.Host)
-				context.End("host missmatch," + referenceURI.Host + " vs " + currentURI.Host)
-				return nil //known exception, not error
-			}
-		} else {
-			if referenceURI.Host != currentURI.Host {
-				context.End("host missmatch," + referenceURI.Host + " vs " + currentURI.Host)
-				return nil //known exception, not error
-			}
+		//TODO: Bug occurs here if we seed a site that did a redirect and have followSubDomain set to true and followAllDomain set to false
+		//e.g. google.com -> www.google.com, it thinks there is a host mismatch (potentially should not worry about host mismatches in redirects?)
+		//Update: Not sure if this still occurs after the reworking of logic - will need to write unit tests
+		if !strings.Contains(currentURI.Host, referenceURI.Host) {
+			log.Debug("host mismatch,", referenceURI.Host, " vs ", currentURI.Host)
+			context.End("host missmatch," + referenceURI.Host + " vs " + currentURI.Host)
+			return nil //known exception, not error
 		}
-
 	}
 
 	context.Set(model.CONTEXT_TASK_URL, url)
