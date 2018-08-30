@@ -14,6 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+//TODO: Add multilingual support - Currently the webhunter only requests in en-US results
+
 package util
 
 import (
@@ -28,6 +30,7 @@ import (
 
 	"crypto/tls"
 	"fmt"
+
 	log "github.com/cihub/seelog"
 	"github.com/xirtah/gopa/core/errors"
 	"golang.org/x/net/proxy"
@@ -225,7 +228,7 @@ func get(url string, cookie string, proxyStr string) (*Result, error) {
 	reqest.Header.Set("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
 	reqest.Header.Set("Accept-Charset", "GBK,utf-8;q=0.7,*;q=0.3")
 	reqest.Header.Set("Accept-Encoding", "gzip,deflate,sdch")
-	reqest.Header.Set("Accept-Language", "zh-CN,zh;q=0.8")
+	reqest.Header.Set("Accept-Language", "en-US,en;q=0.8")
 	reqest.Header.Set("Cache-Control", "max-age=0")
 	reqest.Header.Set("Connection", "keep-alive")
 	reqest.Header.Set("Referer", url)
@@ -269,7 +272,7 @@ func ExecuteRequest(req *Request) (*Result, error) {
 	//	reqest.Header.Add("Content-Type", "application/x-www-form-urlencoded")
 	//reqest.Header.Add("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8")
 	request.Header.Add("Content-Type", "application/json;charset=utf-8")
-	request.Header.Set("Accept-Language", "zh-CN,zh;q=0.8")
+	request.Header.Set("Accept-Language", "en-US,en;q=0.8")
 	request.Header.Set("Cache-Control", "max-age=0")
 	request.Header.Set("Connection", "keep-alive")
 	request.Header.Set("Referer", req.Url)
