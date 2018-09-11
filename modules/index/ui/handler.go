@@ -4,6 +4,10 @@ import (
 	"github.com/julienschmidt/httprouter"
 
 	"fmt"
+	"net/http"
+	"strings"
+
+	log "github.com/cihub/seelog"
 	"github.com/emirpasic/gods/sets/hashset"
 	"github.com/xirtah/gopa/core/errors"
 	"github.com/xirtah/gopa/core/http"
@@ -15,8 +19,6 @@ import (
 	common "github.com/xirtah/gopa/modules/index/ui/common"
 	handler "github.com/xirtah/gopa/modules/index/ui/handler"
 	mobileHandler "github.com/xirtah/gopa/modules/index/ui/m/handler"
-	"net/http"
-	"strings"
 )
 
 // UserUI is the user namespace, public web
@@ -72,95 +74,168 @@ func (h *UserUI) execute(filterQuery, query string, agg bool, from, size int) (*
 	aggStr := ""
 	if agg {
 		aggStr = `
-	"aggs": {
-        "host|Host": {
-            "terms": {
-                "field": "host",
-                "size": 10
-            }
-        },
-        "snapshot.lang|Language": {
-            "terms": {
-                "field": "snapshot.lang",
-                "size": 10
-            }
-        },
-        "task.schema|Protocol": {
-            "terms": {
-                "field": "task.schema",
-                "size": 10
-            }
-        },
-        "snapshot.content_type|Content Type": {
-            "terms": {
-                "field": "snapshot.content_type",
-                "size": 10
-            }
-        },
-        "snapshot.ext|File Ext": {
-            "terms": {
-                "field": "snapshot.ext",
-                "size": 10
-            }
-        }
-    },
-	`
+		"aggs": {
+			"snapshot.organisations|Organisations": {
+				"terms": {
+					"field": "snapshot.organisations",
+					"size": 20
+				}
+			},
+			"snapshot.persons|Persons": {
+				"terms": {
+					"field": "snapshot.persons",
+					"size": 20
+				}
+			},
+			"host|Host": {
+				"terms": {
+					"field": "host",
+					"size": 10
+				}
+			}
+		},
+		`
+
+		// 	aggStr = `
+		// "aggs": {
+		// 	"snapshot.organisations|Organisations": {
+		//         "terms": {
+		//             "field": "snapshot.organisations",
+		//             "size": 50
+		//         }
+		//     },
+		//     "host|Host": {
+		//         "terms": {
+		//             "field": "host",
+		//             "size": 10
+		//         }
+		//     },
+		//     "snapshot.lang|Language": {
+		//         "terms": {
+		//             "field": "snapshot.lang",
+		//             "size": 10
+		//         }
+		//     },
+		//     "task.schema|Protocol": {
+		//         "terms": {
+		//             "field": "task.schema",
+		//             "size": 10
+		//         }
+		//     },
+		//     "snapshot.content_type|Content Type": {
+		//         "terms": {
+		//             "field": "snapshot.content_type",
+		//             "size": 10
+		//         }
+		//     },
+		//     "snapshot.ext|File Ext": {
+		//         "terms": {
+		//             "field": "snapshot.ext",
+		//             "size": 10
+		//         }
+		//     }
+		// },
+		// `
 	}
 
 	format := `
-		{
+			{
 
-  "query": {
-    "bool": {
-      "must": [
-       %s
-        {
-          "query_string": {
-            "query": "%s",
-            "default_operator": "and",
-            "fields": [
-              "snapshot.title^100",
-              "snapshot.summary",
-              "snapshot.text"
-            ],
-            "allow_leading_wildcard": false
-          }
-        }
-      ]
-    }
-  },
-  "collapse": {
-    "field": "snapshot.title.keyword",
-    "inner_hits": {
-      "name": "collpased_docs",
-      "size": 5
-    }
-  },
-    "highlight": {
-        "pre_tags": [
-            "<span class=highlight_snippet >"
-        ],
-        "post_tags": [
-            "</span>"
-        ],
-        "fields": {
-            "snapshot.title": {
-                "fragment_size": 100,
-                "number_of_fragments": 5
-            },
-            "snapshot.text": {
-                "fragment_size": 150,
-                "number_of_fragments": 5
-            }
-        }
-    },
-    %s
-    "from": %v,
-    "size": %v
-}
-		`
+	  "query": {
+	    "bool": {
+	      "must": [
+	       %s
+	        {
+	          "multi_match": {
+				"query": "%s",
+				"type": "best_fields",
+	            "fields": [
+				  "snapshot.title^1.5",
+				  "snapshot.text^1.2",
+				  "snapshot.keywords",
+				  "snapshot.description"
+				],
+				"tie_breaker":0.3
+	          }
+	        }
+	      ]
+	    }
+	  },
+	  "collapse": {
+	    "field": "snapshot.title.keyword",
+	    "inner_hits": {
+	      "name": "collpased_docs",
+	      "size": 5
+	    }
+	  },
+	    "highlight": {
+	        "pre_tags": [
+	            "<span class=highlight_snippet >"
+	        ],
+	        "post_tags": [
+	            "</span>"
+	        ],
+	        "fields": {
+	            "snapshot.title": {
+	                "fragment_size": 100,
+	                "number_of_fragments": 5
+	            },
+	            "snapshot.text": {
+	                "fragment_size": 150,
+	                "number_of_fragments": 5
+	            }
+	        }
+	    },
+	    %s
+	    "from": %v,
+	    "size": %v
+	}
+			`
+
+	// format := `{
+	// 	"query" : {
+	// 		"multi_match": {
+	// 			"query": "%s",
+	// 			"fields": [ "snapshot.title^100",
+	// 						"snapshot.summary",
+	// 						"snapshot.text"
+	// 					]
+	// 		}
+	// 	},
+	// 	"collapse": {
+	// 		"field": "snapshot.title.keyword",
+	// 		"inner_hits": {
+	// 		  "name": "collpased_docs",
+	// 		  "size": 5
+	// 		}
+	// 	  },
+	// 	"highlight": {
+	// 		"pre_tags": [
+	// 			"<span class=highlight_snippet >"
+	// 		],
+	// 		"post_tags": [
+	// 			"</span>"
+	// 		],
+	// 		"fields": {
+	// 			"snapshot.title": {
+	// 				"fragment_size": 100,
+	// 				"number_of_fragments": 5
+	// 			},
+	// 			"snapshot.text": {
+	// 				"fragment_size": 150,
+	// 				"number_of_fragments": 5
+	// 			}
+	// 		}
+	// 	},
+	// 	%s
+	// 	"from": %v,
+	// 	"size": %v
+	// }
+	// `
+	log.Info("AGG: ", agg, " | filterQuery: ", filterQuery)
 
 	q := fmt.Sprintf(format, filterQuery, query, aggStr, from, size)
+	//q := fmt.Sprintf(format, query, aggStr, from, size)
 
 	return h.SearchClient.SearchWithRawQueryDSL("index", []byte(q))
 }

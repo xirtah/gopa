@@ -39,6 +39,7 @@ func InitJoints() {
 	model.RegisterPipeJoint(joint.UrlNormalizationJoint{})
 	model.RegisterPipeJoint(joint.SaveTaskJoint{})
 	model.RegisterPipeJoint(joint.HtmlToTextJoint{})
+	model.RegisterPipeJoint(joint.NamedEntityRecognitionJoint{})
 	model.RegisterPipeJoint(joint.IgnoreTimeoutJoint{})
 	model.RegisterPipeJoint(joint.LoadMetadataJoint{})
 	model.RegisterPipeJoint(joint.ParsePageJoint{})

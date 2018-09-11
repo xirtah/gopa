@@ -1,5 +1,4 @@
-#curl --user elastic:changeme -XDELETE "http://localhost:9200/gopa-index"
-
+curl --user elastic:changeme -XDELETE "http://localhost:9200/gopa-index"
 
 curl --user elastic:changeme -XPUT "http://localhost:9200/gopa-index" -H 'Content-Type: application/json' -d'
 {
@@ -125,16 +124,24 @@ curl --user elastic:changeme -XPUT "http://localhost:9200/gopa-index" -H 'Conten
 "size": {
 "type": "long"
 },
+"organisations": {
+  "type": "keyword"
+},
+"persons": {
+  "type": "keyword"
+},
 "text": {
-"type": "text"
+    "type": "text",
+    "analyzer": "english"
 },
 "title": {
-"type": "text",
-"fields": {
-"keyword": {
-"type": "keyword"
-}
-}
+    "type": "text",
+    "analyzer": "english",
+    "fields": {
+        "keyword": {
+            "type": "keyword"
+        }
+    }
 },
 "version": {
 "type": "long"
@@ -188,3 +195,47 @@ curl --user elastic:changeme -XPUT "http://localhost:9200/gopa-index" -H 'Conten
 }
 }
 }'
+
+
+curl -XPOST "http://localhost:9200/gopa-index/_close"
+
+curl --user elastic:changeme -XPUT "http://localhost:9200/gopa-index/_settings" -H 'Content-Type: application/json' -d'
+{
+  "settings": {
+    "analysis": {
+      "filter": {
+        "english_stop": {
+          "type":       "stop",
+          "stopwords":  "_english_" 
+        },
+        "english_keywords": {
+          "type":       "keyword_marker",
+          "keywords":   [] 
+        },
+        "english_stemmer": {
+          "type":       "stemmer",
+          "language":   "english"
+        },
+        "english_possessive_stemmer": {
+          "type":       "stemmer",
+          "language":   "possessive_english"
+        }
+      },
+      "analyzer": {
+        "english": {
+          "tokenizer":  "standard",
+          "filter": [
+            "english_possessive_stemmer",
+            "lowercase",
+            "english_stop",
+            "english_keywords",
+            "english_stemmer"
+          ]
+        }
+      }
+    }
+  }
+}
+'
+
+curl -XPOST "http://localhost:9200/gopa-index/_open"

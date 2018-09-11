@@ -156,8 +156,8 @@ modules:
             enabled: true
             parameters:
               timeout_in_seconds: 100
-    #          proxy: "socks5://127.0.0.1:1080"
-    #          cookie: ""
+               #proxy: "socks5://127.0.0.1:1080"
+               #cookie: ""
           - joint: parse
             enabled: true
             parameters:
@@ -175,6 +175,10 @@ modules:
             parameters:
               remove_nonscript: true
               merge_whitespace: false
+            enabled: true
+          - joint: ner
+            parameters:
+              URL_CoreNLP: "http://localhost:9000/"
             enabled: true
           - joint: hash
             enabled: true
@@ -234,8 +238,8 @@ modules:
             enabled: true
             parameters:
               timeout_in_seconds: 100
-    #          proxy: "socks5://127.0.0.1:1080"
-    #          cookie: ""
+              #proxy: "socks5://127.0.0.1:1080"
+              #cookie: ""
           - joint: parse
             enabled: true
             parameters:
@@ -324,9 +328,12 @@ modules:
   enabled: true
   ui:
     enabled: true
-#    site_name: Elasticsearch
-#    logo: https://static-www.elastic.co/cn/assets/blt6050efb80ceabd47/elastic-logo (2).svg?q=294
-#    favicon: https://www.elastic.co/favicon.ico
+    site_name: Elasticsearch
+    logo: http://defence.gov.au/_master/images/layout/gov-crest-horizontal.png
+    favicon: http://defence.gov.au/favicon.ico
+    site_name: Defence Search
+    #logo: https://static-www.elastic.co/cn/assets/blt6050efb80ceabd47/elastic-logo (2).svg?q=294
+    #favicon: https://www.elastic.co/favicon.ico
   elasticsearch:
     endpoint: http://localhost:9200
     index_prefix: gopa-

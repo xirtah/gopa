@@ -17,11 +17,12 @@ limitations under the License.
 package model
 
 import (
+	"time"
+
 	log "github.com/cihub/seelog"
 	"github.com/xirtah/gopa/core/errors"
 	"github.com/xirtah/gopa/core/persist"
 	"github.com/xirtah/gopa/core/util"
-	"time"
 )
 
 type KV struct {
@@ -56,9 +57,14 @@ type Snapshot struct {
 	Language string `json:"lang,omitempty" gorm:"-"`
 
 	Title       string `json:"title,omitempty"`
+	Description string `json:"description,omitempty" gorm:"-"`
 	Summary     string `json:"summary,omitempty" gorm:"-"`
 	Text        string `json:"text,omitempty" gorm:"-"`
+	Keywords    string `json:"keywords,omitempty" gorm:"-"`
 	ContentType string `json:"content_type,omitempty"`
+
+	Organisations []string `json:"organisations,omitempty" gorm:"-"`
+	Persons       []string `json:"persons,omitempty" gorm:"-"`
 
 	Tags []string `json:"tags,omitempty" gorm:"-"`
 
