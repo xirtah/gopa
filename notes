@@ -1,0 +1,39 @@
+STANFORDCORENLP (this is a downloaded release)
+
+cd ~/Downloads/stanford-corenlp-full-2018-02-27
+
+java --add-modules java.se.ee -mx2500m -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -port 9000 -timeout 15000
+
+ELASTICSEARCH (this is the source from github)
+
+cd   ~/Documents/Git/elasticsearch
+
+#Clean - if needed
+./gradlew clean
+
+#run
+./gradlew run
+
+
+GOPA
+
+cd ~/go/src/github.com/xirtah/gopa
+
+#Remove the data folder - if you want to do a brand new crawl
+rm -rf data
+
+#Build
+make Build
+
+#execute
+./bin/gopa
+
+
+MISC
+
+#Redirect external traffic to localhost
+sudo iptables -t nat -I PREROUTING -p tcp -d 192.168.1.13 -j DNAT --to 127.0.0.1
+sudo sysctl -w net.ipv4.conf.all.route_localnet=1
+
+#Test StanfordCoreNLPServer
+wget --post-data "Koalas are cool!" '192.168.1.13:9000/?properties={"annotators": "ner", "outputFormat":"json"}' -O -
