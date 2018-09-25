@@ -1,3 +1,3 @@
 <%! func Copyright(w io.Writer,config *UIConfig) error %>
-<%% import "github.com/xirtah/gopa-framework/core/env" %%>
-<%= config.SiteName %> ©2017, Powered by <a target="_blank" href="https://github.com/xirtah/gopa" >GOPA</a> v<%= env.GetVersion() %> #<a title="<%= env.GetLastCommitLog() %>" href="https://github.com/xirtah/gopa-spider/commit/<%= env.GetLastCommitHash() %>"><%= env.GetLastCommitHash() %></a>.
+<%% import "github.com/xirtah/gopa-spider/config/version" %%>
+<%= config.SiteName %> ©2017, Powered by <a target="_blank" href="https://github.com/xirtah/gopa" >GOPA</a> v<%= version.GetVersion() %> #<a title="<%= version.GetLastCommitLog() %>" href="https://github.com/xirtah/gopa-spider/commit/<%= version.GetLastCommitHash() %>"><%= version.GetLastCommitHash() %></a>.

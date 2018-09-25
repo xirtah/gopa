@@ -23,6 +23,8 @@ import (
 	"github.com/xirtah/gopa-framework/core/env"
 	"github.com/xirtah/gopa-framework/core/global"
 	"github.com/xirtah/gopa-framework/core/http/router"
+
+	v "github.com/xirtah/gopa-spider/config/version"
 )
 
 // IndexAction returns cluster health information
@@ -38,9 +40,9 @@ func (handler API) IndexAction(w http.ResponseWriter, req *http.Request, _ httpr
 	data["name"] = global.Env().SystemConfig.NodeConfig.Name
 
 	version := map[string]interface{}{}
-	version["number"] = env.GetVersion()
-	version["build_commit"] = env.GetLastCommitLog()
-	version["build_date"] = env.GetBuildDate()
+	version["number"] = v.GetVersion()
+	version["build_commit"] = v.GetLastCommitLog()
+	version["build_date"] = v.GetBuildDate()
 
 	data["version"] = version
 	data["tagline"] = "You Know, for Web"

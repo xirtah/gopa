@@ -37,6 +37,7 @@ import (
 	"github.com/xirtah/gopa-framework/core/module"
 	"github.com/xirtah/gopa-framework/core/stats"
 	"github.com/xirtah/gopa-framework/core/util"
+	"github.com/xirtah/gopa-spider/config/version"
 	"github.com/xirtah/gopa-spider/modules"
 	"github.com/xirtah/gopa-spider/plugins"
 )
@@ -47,7 +48,7 @@ var (
 )
 
 func onStart() {
-	fmt.Println(env.GetWelcomeMessage())
+	fmt.Println(version.GetWelcomeMessage())
 }
 
 func onShutdown(isDaemon bool) {
@@ -66,7 +67,7 @@ func onShutdown(isDaemon bool) {
 	fmt.Println("   _` |   _ \\   _ \\   _` |     _ \\  |  |   -_) ")
 	fmt.Println(" \\__, | \\___/ \\___/ \\__,_|   _.__/ \\_, | \\___| ")
 	fmt.Println(" ____/                             ___/        ")
-	fmt.Println("[gopa] "+env.GetVersion()+", uptime:", time.Since(env.GetStartTime()))
+	fmt.Println("[gopa] "+version.GetVersion()+", uptime:", time.Since(env.GetStartTime()))
 	fmt.Println(" ")
 }
 
