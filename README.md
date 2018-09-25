@@ -47,14 +47,14 @@ First of all, get it, two opinions: download the pre-built package or compile it
 
 #### Download Pre Built Package
 
-Go to [Release](https://github.com/xirtah/gopa/releases) or [Snapshot](https://github.com/xirtah/gopa-snapshot/releases) page, download the right package for your platform.
+Go to [Release](https://github.com/xirtah/gopa-spider/releases) or [Snapshot](https://github.com/xirtah/gopa-snapshot/releases) page, download the right package for your platform.
 
 _Note: Darwin is for Mac_
 
 #### Compile The Package Manually
 
 - Mac/Linux: Run `make build` to build the Gopa. <br/>
-- Windows:  Checkout this wiki page - [How to build GOPA on windows](https://github.com/xirtah/gopa/wiki/How-to-build-GOPA-on-windows).
+- Windows:  Checkout this wiki page - [How to build GOPA on windows](https://github.com/xirtah/gopa-spider/wiki/How-to-build-GOPA-on-windows).
 
 So far, we have:
 
@@ -373,4 +373,4 @@ welcome! let's make it better.
 
 License
 =======
-Released under the [Apache License, Version 2.0](https://github.com/xirtah/gopa/blob/master/LICENSE) .
+Released under the [Apache License, Version 2.0](https://github.com/xirtah/gopa-spider/blob/master/LICENSE) .

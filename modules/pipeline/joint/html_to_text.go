@@ -17,13 +17,14 @@ limitations under the License.
 package joint
 
 import (
-	log "github.com/cihub/seelog"
-	"github.com/xirtah/gopa/core/global"
-	"github.com/xirtah/gopa/core/model"
-	"github.com/xirtah/gopa/core/util"
 	"regexp"
 	"strings"
 	"sync"
+
+	log "github.com/cihub/seelog"
+	"github.com/xirtah/gopa-framework/core/global"
+	"github.com/xirtah/gopa-framework/core/model"
+	"github.com/xirtah/gopa-framework/core/util"
 )
 
 type HtmlToTextJoint struct {
@@ -202,10 +203,133 @@ func (joint HtmlToTextJoint) Process(context *model.Context) error {
 	src = strings.Replace(src, "&amp;amp; ", "& ", -1)
 
 	snapshot.Text = util.XSSHandle(src)
+	//probably set summary to text if it is empty (maybe first 300 chars or something)
+	//snapshot.Summary = "KOALAS ARE COOL!" //TODO: Probably wrong place to set summary
+	// if snapshot.Summary == "" {
+
+	// 	snapshot.Summary = "SAMEER:" + snapshot.Text[0:300]
+	// }
 
 	if global.Env().IsDebug {
 		log.Trace("get text: ", src)
 	}
 
+	//TODO: should probably move this into own separate module.
+	//Parse text to CORENLP
+
+	// //url := "http://localhost:9000/?properties={'annotators': 'ner', 'outputFormat':'json'}"
+	// url := "http://localhost:9000/?properties=%7B%22annotators%22:%20%22ner%22,%20%22outputFormat%22:%22json%22%7D"
+	// req := util.NewPostRequest(url, []byte(src))
+	// //req := util.NewPostRequest(url, []byte("Microsoft"))
+
+	// //req.SetBasicAuth(c.Config.Username, c.Config.Password)
+	// response, err := util.ExecuteRequest(req)
+	// log.Info("URL:", url)
+	// if err != nil {
+	// 	//Do nothing
+	// 	//return nil, err"
+	// 	log.Info("Failed to get response from coreNLP")
+	// } else {
+	// 	log.Info("1")
+	// 	// 	testJson := `{
+	// 	// 	"sentences": [
+	// 	// 		{
+	// 	// 			"index": 0,
+	// 	// 			"entitymentions": [],
+	// 	// 			"tokens": [
+	// 	// 				{
+	// 	// 					"index": 1,
+	// 	// 					"word": "Koalas",
+	// 	// 					"originalText": "Koalas",
+	// 	// 					"lemma": "koala",
+	// 	// 					"characterOffsetBegin": 0,
+	// 	// 					"characterOffsetEnd": 6,
+	// 	// 					"pos": "NNS",
+	// 	// 					"ner": "O",
+	// 	// 					"before": "",
+	// 	// 					"after": " "
+	// 	// 				}]
+	// 	// 		}
+	// 	// 	]
+	// 	// }`
+	// 	//var result map[string]interface{}
+	// 	var result coreNLPResult
+
+	// 	log.Info("2")
+	// 	//json.Unmarshal([]byte(testJson), &result)
+	// 	//err = json.Unmarshal(response.Body, &result)
+	// 	json.Unmarshal(response.Body, &result)
+	// 	log.Info("3")
+	// 	//log.Info(result.Sentences[0].Tokens[0].Word)
+
+	// 	for _, sentence := range result.Sentences {
+	// 		for _, entitymentions := range sentence.Entitymentions {
+	// 			log.Info("W:", entitymentions.Text, " N:", entitymentions.Ner)
+	// 			if entitymentions.Ner == "ORGANIZATION" {
+	// 				snapshot.Organisations = append(snapshot.Organisations, entitymentions.Text)
+	// 			}
+	// 			if entitymentions.Ner == "PERSON" {
+	// 				snapshot.Persons = append(snapshot.Persons, entitymentions.Text)
+	// 			}
+	// 		}
+	// 	}
+	// 	// nlp := result["sentences"].(map[string]interface{})
+	// 	// log.Info("4")
+	// 	// for key, value := range nlp {
+	// 	// 	log.Info("5")
+	// 	// 	log.Info(key, value.(string))
+	// 	// }
+	// 	// log.Info("6")
+
+	// 	//log.Info("response from coreNLP: ", string(response.Body))
+	// }
+
 	return nil
 }
+
+// type coreNLPResult struct {
+// 	Sentences []struct {
+// 		Index          int `json:"index"`
+// 		Entitymentions []struct {
+// 			DocTokenBegin        int    `json:"docTokenBegin"`
+// 			DocTokenEnd          int    `json:"docTokenEnd"`
+// 			TokenBegin           int    `json:"tokenBegin"`
+// 			TokenEnd             int    `json:"tokenEnd"`
+// 			Text                 string `json:"text"`
+// 			CharacterOffsetBegin int    `json:"characterOffsetBegin"`
+// 			CharacterOffsetEnd   int    `json:"characterOffsetEnd"`
+// 			Ner                  string `json:"ner"`
+// 		} `json:"entitymentions"`
+// 		// Tokens []struct {
+// 		// 	Index                int    `json:"index"`
+// 		// 	Word                 string `json:"word"`
+// 		// 	OriginalText         string `json:"originalText"`
+// 		// 	Lemma                string `json:"lemma"`
+// 		// 	CharacterOffsetBegin int    `json:"characterOffsetBegin"`
+// 		// 	CharacterOffsetEnd   int    `json:"characterOffsetEnd"`
+// 		// 	Pos                  string `json:"pos"`
+// 		// 	Ner                  string `json:"ner"`
+// 		// 	Before               string `json:"before"`
+// 		// 	After                string `json:"after"`
+// 		// } `json:"tokens"`
+// 	} `json:"sentences"`
+// }
+
+// type coreNLPResult struct {
+// 	Sentences []struct {
+// 		Index          int           `json:"index"`
+// 		Entitymentions []interface{} `json:"entitymentions"`
+// 		Tokens         []struct {
+// 			Index                int    `json:"index"`
+// 			Word                 string `json:"word"`
+// 			OriginalText         string `json:"originalText"`
+// 			Lemma                string `json:"lemma"`
+// 			CharacterOffsetBegin int    `json:"characterOffsetBegin"`
+// 			CharacterOffsetEnd   int    `json:"characterOffsetEnd"`
+// 			Pos                  string `json:"pos"`
+// 			Ner                  string `json:"ner"`
+// 			Before               string `json:"before"`
+// 			After                string `json:"after"`
+// 		} `json:"tokens"`
+// 	} `json:"sentences"`
+// }

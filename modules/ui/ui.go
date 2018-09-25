@@ -17,26 +17,27 @@ limitations under the License.
 package ui
 
 import (
-	uis "github.com/xirtah/gopa/core/http"
-	"github.com/xirtah/gopa/modules/ui/admin"
-	"github.com/xirtah/gopa/modules/ui/websocket"
-	"github.com/xirtah/gopa/static"
 	"net/http"
+
+	uis "github.com/xirtah/gopa-framework/core/http"
+	"github.com/xirtah/gopa-spider/modules/ui/admin"
+	"github.com/xirtah/gopa-spider/modules/ui/websocket"
+	"github.com/xirtah/gopa-spider/static"
 
 	"crypto/tls"
 	"errors"
-	log "github.com/cihub/seelog"
-	"github.com/gorilla/context"
-	. "github.com/xirtah/gopa/core/config"
-	"github.com/xirtah/gopa/core/global"
-	"github.com/xirtah/gopa/core/logger"
-	"github.com/xirtah/gopa/core/util"
-	"github.com/xirtah/gopa/modules/ui/common"
-	"github.com/xirtah/gopa/modules/ui/public"
-	"github.com/julienschmidt/httprouter"
 	_ "net/http/pprof"
 	"path"
 	"path/filepath"
+
+	log "github.com/cihub/seelog"
+	"github.com/gorilla/context"
+	. "github.com/xirtah/gopa-framework/core/config"
+	"github.com/xirtah/gopa-framework/core/global"
+	"github.com/xirtah/gopa-framework/core/http/router"
+	"github.com/xirtah/gopa-framework/core/util"
+	"github.com/xirtah/gopa-spider/modules/ui/common"
+	"github.com/xirtah/gopa-spider/modules/ui/public"
 )
 
 var router *httprouter.Router
@@ -166,7 +167,7 @@ func (module UIModule) Start(cfg *Config) {
 	public.InitUI(adminConfig.AuthConfig)
 
 	//register websocket logger
-	logger.RegisterWebsocketHandler(LoggerReceiver)
+	//logger.RegisterWebsocketHandler(LoggerReceiver)
 
 	go func() {
 		module.internalStart(cfg)

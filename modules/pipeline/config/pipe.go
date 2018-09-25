@@ -1,9 +1,9 @@
 package config
 
 import (
-	"github.com/xirtah/gopa/core/model"
-	"github.com/xirtah/gopa/core/util"
-	"github.com/xirtah/gopa/modules/config"
+	"github.com/xirtah/gopa-framework/core/model"
+	"github.com/xirtah/gopa-framework/core/util"
+	"github.com/xirtah/gopa-spider/modules/config"
 )
 
 // PipeConfig defines crawler related configs

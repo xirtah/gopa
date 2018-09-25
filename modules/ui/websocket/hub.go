@@ -6,12 +6,13 @@ package websocket
 
 import (
 	"encoding/json"
-	"github.com/xirtah/gopa/core/env"
-	"github.com/xirtah/gopa/core/global"
-	"github.com/xirtah/gopa/core/logger"
-	"github.com/xirtah/gopa/core/stats"
 	"strings"
 	"time"
+
+	"github.com/xirtah/gopa-framework/core/env"
+	"github.com/xirtah/gopa-framework/core/global"
+	"github.com/xirtah/gopa-framework/core/logger"
+	"github.com/xirtah/gopa-framework/core/stats"
 )
 
 // Hub maintains the set of active connections and broadcasts messages to the

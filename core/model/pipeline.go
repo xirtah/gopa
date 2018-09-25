@@ -18,16 +18,17 @@ package model
 
 import (
 	"fmt"
-	log "github.com/cihub/seelog"
-	"github.com/xirtah/gopa/core/errors"
-	"github.com/xirtah/gopa/core/global"
-	"github.com/xirtah/gopa/core/stats"
-	"github.com/xirtah/gopa/core/util"
 	"reflect"
 	"runtime"
 	"strings"
 	"sync"
 	"time"
+
+	log "github.com/cihub/seelog"
+	"github.com/xirtah/gopa-framework/core/errors"
+	"github.com/xirtah/gopa-framework/core/stats"
+	"github.com/xirtah/gopa-framework/core/util"
+	"github.com/xirtah/gopa-framework/core/global"
 )
 
 type ParaKey string

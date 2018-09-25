@@ -3,9 +3,9 @@ package service_chrome
 import (
 	"fmt"
 	log "github.com/cihub/seelog"
-	. "github.com/xirtah/gopa/core/config"
-	"github.com/xirtah/gopa/core/model"
-	"github.com/xirtah/gopa/plugins/service_chrome/joint"
+	. "github.com/xirtah/gopa-framework/core/config"
+	"github.com/xirtah/gopa-framework/core/model"
+	"github.com/xirtah/gopa-spider/plugins/service_chrome/joint"
 	"os"
 	"os/exec"
 )

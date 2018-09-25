@@ -18,14 +18,15 @@ package filter
 
 import (
 	"fmt"
-	. "github.com/xirtah/gopa/core/env"
-	"github.com/xirtah/gopa/core/global"
-	"github.com/xirtah/gopa/core/util"
-	"github.com/xirtah/gopa/modules/config"
-	"github.com/xirtah/gopa/modules/storage"
-	"github.com/stretchr/testify/assert"
 	"os"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
+	. "github.com/xirtah/gopa-framework/core/env"
+	"github.com/xirtah/gopa-framework/core/global"
+	"github.com/xirtah/gopa-framework/core/util"
+	"github.com/xirtah/gopa-spider/modules/config"
+	"github.com/xirtah/gopa-spider/modules/storage"
 )
 
 func Test(t *testing.T) {

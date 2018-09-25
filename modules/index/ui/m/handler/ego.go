@@ -5,9 +5,9 @@ package handler
 
 import (
 	"fmt"
-	"github.com/xirtah/gopa/core/index"
-	"github.com/xirtah/gopa/core/util"
-	"github.com/xirtah/gopa/modules/index/ui/common"
+	"github.com/xirtah/gopa-framework/core/index"
+	"github.com/xirtah/gopa-framework/core/util"
+	"github.com/xirtah/gopa-spider/modules/index/ui/common"
 	"html"
 	"io"
 	"net/http"

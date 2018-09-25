@@ -1,9 +1,9 @@
 package config
 
 import (
-	"github.com/xirtah/gopa/core/errors"
-	"github.com/xirtah/gopa/core/filter"
-	"github.com/xirtah/gopa/core/global"
+	"github.com/xirtah/gopa-framework/core/errors"
+	"github.com/xirtah/gopa-framework/core/filter"
+	"github.com/xirtah/gopa-framework/core/global"
 )
 
 const (

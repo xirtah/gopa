@@ -1,7 +1,7 @@
 package impl
 
 import (
-	"github.com/xirtah/gopa/core/persist"
+	"github.com/xirtah/gopa-framework/core/persist"
 )
 
 type PersistFilter struct {

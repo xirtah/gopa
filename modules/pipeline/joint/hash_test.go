@@ -18,7 +18,7 @@ package joint
 
 import (
 	"fmt"
-	"github.com/xirtah/gopa/core/model"
+	"github.com/xirtah/gopa-framework/core/model"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )

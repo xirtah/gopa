@@ -16,7 +16,7 @@ limitations under the License.
 
 package joint
 
-import "github.com/xirtah/gopa/core/model"
+import "github.com/xirtah/gopa-framework/core/model"
 
 //LoadMetadataJoint load metadata from db
 type LoadMetadataJoint struct {

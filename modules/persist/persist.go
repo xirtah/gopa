@@ -17,14 +17,14 @@ limitations under the License.
 package persist
 
 import (
-	. "github.com/xirtah/gopa/core/config"
-	"github.com/xirtah/gopa/core/errors"
-	"github.com/xirtah/gopa/core/index"
-	"github.com/xirtah/gopa/core/model"
-	"github.com/xirtah/gopa/core/persist"
-	"github.com/xirtah/gopa/modules/persist/elastic"
-	"github.com/xirtah/gopa/modules/persist/mysql"
-	"github.com/xirtah/gopa/modules/persist/sqlite"
+	. "github.com/xirtah/gopa-framework/core/config"
+	"github.com/xirtah/gopa-framework/core/errors"
+	"github.com/xirtah/gopa-framework/core/index"
+	"github.com/xirtah/gopa-framework/core/model"
+	"github.com/xirtah/gopa-framework/core/persist"
+	"github.com/xirtah/gopa-spider/modules/persist/elastic"
+	"github.com/xirtah/gopa-spider/modules/persist/mysql"
+	"github.com/xirtah/gopa-spider/modules/persist/sqlite"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"

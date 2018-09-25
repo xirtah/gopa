@@ -17,18 +17,18 @@ limitations under the License.
 package modules
 
 import (
-	"github.com/xirtah/gopa/core/module"
-	"github.com/xirtah/gopa/modules/api"
-	"github.com/xirtah/gopa/modules/cluster"
-	"github.com/xirtah/gopa/modules/dispatch"
-	"github.com/xirtah/gopa/modules/filter"
-	"github.com/xirtah/gopa/modules/index"
-	"github.com/xirtah/gopa/modules/persist"
-	"github.com/xirtah/gopa/modules/pipeline"
-	"github.com/xirtah/gopa/modules/queue"
-	"github.com/xirtah/gopa/modules/stats"
-	"github.com/xirtah/gopa/modules/storage"
-	"github.com/xirtah/gopa/modules/ui"
+	"github.com/xirtah/gopa-framework/core/module"
+	"github.com/xirtah/gopa-spider/modules/api"
+	"github.com/xirtah/gopa-spider/modules/cluster"
+	"github.com/xirtah/gopa-spider/modules/dispatch"
+	"github.com/xirtah/gopa-spider/modules/filter"
+	"github.com/xirtah/gopa-spider/modules/index"
+	"github.com/xirtah/gopa-spider/modules/persist"
+	"github.com/xirtah/gopa-spider/modules/pipeline"
+	"github.com/xirtah/gopa-spider/modules/queue"
+	"github.com/xirtah/gopa-spider/modules/stats"
+	"github.com/xirtah/gopa-spider/modules/storage"
+	"github.com/xirtah/gopa-spider/modules/ui"
 )
 
 // Register is where modules are registered

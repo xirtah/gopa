@@ -2,14 +2,15 @@ package queue
 
 import (
 	"errors"
-	log "github.com/cihub/seelog"
-	. "github.com/xirtah/gopa/core/config"
-	"github.com/xirtah/gopa/core/global"
-	. "github.com/xirtah/gopa/core/queue"
-	"github.com/xirtah/gopa/modules/config"
-	. "github.com/xirtah/gopa/modules/queue/disk_queue"
 	"os"
 	"time"
+
+	log "github.com/cihub/seelog"
+	. "github.com/xirtah/gopa-framework/core/config"
+	"github.com/xirtah/gopa-framework/core/global"
+	. "github.com/xirtah/gopa-framework/core/queue"
+	"github.com/xirtah/gopa-spider/modules/config"
+	. "github.com/xirtah/gopa-spider/modules/queue/disk_queue"
 )
 
 var queues map[string]*BackendQueue

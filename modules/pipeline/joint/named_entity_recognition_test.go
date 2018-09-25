@@ -7,9 +7,9 @@ package joint
 import (
 	"testing"
 
-	"github.com/xirtah/gopa/core/env"
-	"github.com/xirtah/gopa/core/global"
-	"github.com/xirtah/gopa/core/model"
+	"github.com/xirtah/gopa-framework/core/env"
+	"github.com/xirtah/gopa-framework/core/global"
+	"github.com/xirtah/gopa-framework/core/model"
 )
 
 func TestProcessNamedEntityRecognition(t *testing.T) {

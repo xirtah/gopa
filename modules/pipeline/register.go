@@ -18,8 +18,8 @@ package pipeline
 
 import (
 	log "github.com/cihub/seelog"
-	"github.com/xirtah/gopa/core/model"
-	"github.com/xirtah/gopa/modules/pipeline/joint"
+	"github.com/xirtah/gopa-framework/core/model"
+	"github.com/xirtah/gopa-spider/modules/pipeline/joint"
 )
 
 var inited bool = false

@@ -18,11 +18,12 @@ package model
 
 import (
 	"fmt"
-	"github.com/xirtah/gopa/core/env"
-	"github.com/xirtah/gopa/core/global"
-	"github.com/xirtah/gopa/core/util"
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
+	"github.com/xirtah/gopa-framework/core/env"
+	"github.com/xirtah/gopa-framework/core/global"
+	"github.com/xirtah/gopa-framework/core/util"
 )
 
 type crawlerJoint struct {

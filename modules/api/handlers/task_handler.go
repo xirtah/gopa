@@ -18,16 +18,17 @@ package http
 
 import (
 	"encoding/json"
-	log "github.com/cihub/seelog"
-	logger "github.com/cihub/seelog"
-	api "github.com/xirtah/gopa/core/http"
-	"github.com/xirtah/gopa/core/model"
-	"github.com/xirtah/gopa/core/queue"
-	"github.com/xirtah/gopa/core/util"
-	"github.com/xirtah/gopa/modules/config"
-	"github.com/julienschmidt/httprouter"
 	"net/http"
 	"strconv"
+
+	log "github.com/cihub/seelog"
+	logger "github.com/cihub/seelog"
+	api "github.com/xirtah/gopa-framework/core/http"
+	"github.com/xirtah/gopa-framework/core/http/router"
+	"github.com/xirtah/gopa-framework/core/model"
+	"github.com/xirtah/gopa-framework/core/queue"
+	"github.com/xirtah/gopa-framework/core/util"
+	"github.com/xirtah/gopa-spider/modules/config"
 )
 
 // TaskDeleteAction handle task delete by id, eg:

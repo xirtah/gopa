@@ -19,16 +19,17 @@ package public
 import (
 	"crypto/rand"
 	"encoding/base64"
+	"net/http"
+
 	log "github.com/cihub/seelog"
 	"github.com/emirpasic/gods/sets/hashset"
 	"github.com/google/go-github/github"
-	"github.com/xirtah/gopa/core/http"
-	"github.com/xirtah/gopa/core/model"
-	"github.com/xirtah/gopa/core/util"
-	"github.com/xirtah/gopa/modules/ui/public/auth"
-	"github.com/julienschmidt/httprouter"
+	"github.com/xirtah/gopa-framework/core/http"
+	"github.com/xirtah/gopa-framework/core/http/router"
+	"github.com/xirtah/gopa-framework/core/model"
+	"github.com/xirtah/gopa-framework/core/util"
+	"github.com/xirtah/gopa-spider/modules/ui/public/auth"
 	"golang.org/x/oauth2"
-	"net/http"
 )
 
 type PublicUI struct {

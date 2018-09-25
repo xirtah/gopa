@@ -18,10 +18,11 @@ package http
 
 import (
 	"encoding/json"
-	"github.com/xirtah/gopa/core/model"
-	"github.com/julienschmidt/httprouter"
 	"net/http"
 	"strconv"
+
+	"github.com/xirtah/gopa-framework/core/http/router"
+	"github.com/xirtah/gopa-framework/core/model"
 )
 
 func (api API) GetProjectsAction(w http.ResponseWriter, req *http.Request, ps httprouter.Params) {

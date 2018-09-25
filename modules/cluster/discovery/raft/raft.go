@@ -11,14 +11,6 @@ import (
 	"crypto/tls"
 	"encoding/json"
 	"fmt"
-	log "github.com/cihub/seelog"
-	"github.com/hashicorp/raft"
-	"github.com/hashicorp/raft-boltdb"
-	"github.com/xirtah/gopa/core/errors"
-	"github.com/xirtah/gopa/core/global"
-	apihandler "github.com/xirtah/gopa/core/http"
-	"github.com/xirtah/gopa/core/util"
-	. "github.com/xirtah/gopa/modules/cluster/discovery/config"
 	"io"
 	"io/ioutil"
 	"net"
@@ -28,6 +20,15 @@ import (
 	"strings"
 	"sync"
 	"time"
+
+	log "github.com/cihub/seelog"
+	"github.com/hashicorp/raft"
+	"github.com/hashicorp/raft-boltdb"
+	"github.com/xirtah/gopa-framework/core/errors"
+	"github.com/xirtah/gopa-framework/core/global"
+	apihandler "github.com/xirtah/gopa-framework/core/http"
+	"github.com/xirtah/gopa-framework/core/util"
+	. "github.com/xirtah/gopa-spider/modules/cluster/discovery/config"
 )
 
 const (

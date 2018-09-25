@@ -17,8 +17,8 @@ limitations under the License.
 package joint
 
 import (
-	"github.com/xirtah/gopa/core/config"
-	"github.com/xirtah/gopa/core/model"
+	"github.com/xirtah/gopa-framework/core/config"
+	"github.com/xirtah/gopa-framework/core/model"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )

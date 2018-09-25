@@ -17,9 +17,10 @@ limitations under the License.
 package http
 
 import (
-	"github.com/xirtah/gopa/core/model"
-	"github.com/julienschmidt/httprouter"
 	"net/http"
+
+	"github.com/xirtah/gopa-framework/core/http/router"
+	"github.com/xirtah/gopa-framework/core/model"
 
 	"encoding/json"
 	"strconv"

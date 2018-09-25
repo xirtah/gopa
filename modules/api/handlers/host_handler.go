@@ -18,11 +18,12 @@ package http
 
 import (
 	"encoding/json"
-	api "github.com/xirtah/gopa/core/http"
-	"github.com/xirtah/gopa/core/model"
-	"github.com/julienschmidt/httprouter"
 	"net/http"
 	"strconv"
+
+	api "github.com/xirtah/gopa-framework/core/http"
+	"github.com/xirtah/gopa-framework/core/http/router"
+	"github.com/xirtah/gopa-framework/core/model"
 )
 
 // DeleteHostAction handle host deletion, only support delete by id, eg:

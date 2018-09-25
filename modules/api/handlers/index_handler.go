@@ -17,11 +17,12 @@ limitations under the License.
 package http
 
 import (
-	"github.com/xirtah/gopa/core/env"
-	"github.com/xirtah/gopa/core/global"
-	"github.com/julienschmidt/httprouter"
 	"net/http"
 	"time"
+
+	"github.com/xirtah/gopa-framework/core/env"
+	"github.com/xirtah/gopa-framework/core/global"
+	"github.com/xirtah/gopa-framework/core/http/router"
 )
 
 // IndexAction returns cluster health information

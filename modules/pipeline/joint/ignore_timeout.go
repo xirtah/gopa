@@ -18,9 +18,9 @@ package joint
 
 import (
 	log "github.com/cihub/seelog"
-	"github.com/xirtah/gopa/core/model"
-	"github.com/xirtah/gopa/core/stats"
-	"github.com/xirtah/gopa/modules/config"
+	"github.com/xirtah/gopa-framework/core/model"
+	"github.com/xirtah/gopa-framework/core/stats"
+	"github.com/xirtah/gopa-spider/modules/config"
 )
 
 func (joint IgnoreTimeoutJoint) Name() string {

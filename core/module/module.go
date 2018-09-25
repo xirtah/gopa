@@ -18,7 +18,7 @@ package module
 
 import (
 	log "github.com/cihub/seelog"
-	"github.com/xirtah/gopa/core/env"
+	"github.com/xirtah/gopa-framework/core/env"
 )
 
 const System = "system"

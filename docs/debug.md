@@ -25,7 +25,7 @@
     
     `curl -s http://localhost:6060/debug/pprof/heap >2.heap`
     
-    `go tool pprof -inuse_objects  --base 1.heap ~/go/src/github.com/xirtah/gopa/bin/gopa  2.heap`
+    `go tool pprof -inuse_objects  --base 1.heap ~/go/src/github.com/xirtah/gopa-spider/bin/gopa  2.heap`
     
     use `top` to find top functions, and then use `list func_name` to view the source code.
 

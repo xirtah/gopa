@@ -18,14 +18,15 @@ package websocket
 
 import (
 	"encoding/json"
-	log "github.com/cihub/seelog"
-	"github.com/xirtah/gopa/core/global"
-	logging "github.com/xirtah/gopa/core/logger"
-	"github.com/xirtah/gopa/core/model"
-	"github.com/xirtah/gopa/core/queue"
-	"github.com/xirtah/gopa/core/util"
-	"github.com/xirtah/gopa/modules/config"
 	"strings"
+
+	log "github.com/cihub/seelog"
+	"github.com/xirtah/gopa-framework/core/global"
+	logging "github.com/xirtah/gopa-framework/core/logger"
+	"github.com/xirtah/gopa-framework/core/model"
+	"github.com/xirtah/gopa-framework/core/queue"
+	"github.com/xirtah/gopa-framework/core/util"
+	"github.com/xirtah/gopa-spider/modules/config"
 )
 
 // Command struct forms different command

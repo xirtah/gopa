@@ -17,9 +17,9 @@ limitations under the License.
 package http
 
 import (
-	"github.com/xirtah/gopa/core/queue"
-	"github.com/xirtah/gopa/core/util"
-	"github.com/xirtah/gopa/modules/config"
+	"github.com/xirtah/gopa-framework/core/queue"
+	"github.com/xirtah/gopa-framework/core/util"
+	"github.com/xirtah/gopa-spider/modules/config"
 	"net/http"
 )
 

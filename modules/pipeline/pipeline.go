@@ -18,18 +18,19 @@ package pipeline
 
 import (
 	"encoding/json"
-	log "github.com/cihub/seelog"
-	. "github.com/xirtah/gopa/core/config"
-	"github.com/xirtah/gopa/core/errors"
-	"github.com/xirtah/gopa/core/global"
-	"github.com/xirtah/gopa/core/model"
-	"github.com/xirtah/gopa/core/queue"
-	"github.com/xirtah/gopa/core/stats"
-	"github.com/xirtah/gopa/core/util"
-	. "github.com/xirtah/gopa/modules/pipeline/config"
 	"runtime"
 	"sync"
 	"time"
+
+	log "github.com/cihub/seelog"
+	. "github.com/xirtah/gopa-framework/core/config"
+	"github.com/xirtah/gopa-framework/core/errors"
+	"github.com/xirtah/gopa-framework/core/global"
+	"github.com/xirtah/gopa-framework/core/model"
+	"github.com/xirtah/gopa-framework/core/queue"
+	"github.com/xirtah/gopa-framework/core/stats"
+	"github.com/xirtah/gopa-framework/core/util"
+	. "github.com/xirtah/gopa-spider/modules/pipeline/config"
 )
 
 var frameworkStarted bool

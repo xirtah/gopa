@@ -2,7 +2,7 @@ package pprof
 
 import (
 	"fmt"
-	"github.com/xirtah/gopa/core/util"
+	"github.com/xirtah/gopa-framework/core/util"
 	"regexp"
 	"sort"
 )

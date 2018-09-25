@@ -17,10 +17,11 @@ limitations under the License.
 package http
 
 import (
-	"github.com/xirtah/gopa/core/http"
-	"github.com/julienschmidt/httprouter"
 	"net/http"
 	"time"
+
+	"github.com/xirtah/gopa-framework/core/http"
+	"github.com/xirtah/gopa-framework/core/http/router"
 )
 
 func (handler API) handleUserLoginRequest(w http.ResponseWriter, req *http.Request, ps httprouter.Params) {

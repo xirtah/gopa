@@ -21,17 +21,18 @@ import (
 
 	"crypto/tls"
 	"errors"
-	log "github.com/cihub/seelog"
-	"github.com/gorilla/context"
-	"github.com/xirtah/gopa/core/config"
-	"github.com/xirtah/gopa/core/env"
-	"github.com/xirtah/gopa/core/global"
-	apis "github.com/xirtah/gopa/core/http"
-	"github.com/xirtah/gopa/core/util"
-	handlers "github.com/xirtah/gopa/modules/api/handlers"
-	"github.com/julienschmidt/httprouter"
 	"path"
 	"path/filepath"
+
+	log "github.com/cihub/seelog"
+	"github.com/gorilla/context"
+	"github.com/xirtah/gopa-framework/core/config"
+	"github.com/xirtah/gopa-framework/core/env"
+	"github.com/xirtah/gopa-framework/core/global"
+	apis "github.com/xirtah/gopa-framework/core/http"
+	"github.com/xirtah/gopa-framework/core/http/router"
+	"github.com/xirtah/gopa-framework/core/util"
+	handlers "github.com/xirtah/gopa-spider/modules/api/handlers"
 )
 
 var router *httprouter.Router

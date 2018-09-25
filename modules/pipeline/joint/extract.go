@@ -18,12 +18,13 @@ package joint
 
 import (
 	"bytes"
+	"strings"
+
 	"github.com/PuerkitoBio/goquery"
 	log "github.com/cihub/seelog"
-	"github.com/xirtah/gopa/core/errors"
-	"github.com/xirtah/gopa/core/model"
-	"github.com/xirtah/gopa/core/util"
-	"strings"
+	"github.com/xirtah/gopa-framework/core/errors"
+	"github.com/xirtah/gopa-framework/core/model"
+	"github.com/xirtah/gopa-framework/core/util"
 )
 
 type ExtractJoint struct {

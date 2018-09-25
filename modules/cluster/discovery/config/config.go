@@ -1,9 +1,10 @@
 package config
 
 import (
-	log "github.com/cihub/seelog"
-	"github.com/xirtah/gopa/core/global"
 	"path"
+
+	log "github.com/cihub/seelog"
+	"github.com/xirtah/gopa-framework/core/global"
 )
 
 type Command struct {

@@ -17,7 +17,7 @@ limitations under the License.
 package http
 
 import (
-	"github.com/xirtah/gopa/core/stats"
+	"github.com/xirtah/gopa-framework/core/stats"
 	"net/http"
 )
 

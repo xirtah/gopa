@@ -2,17 +2,18 @@ package index
 
 import (
 	"encoding/json"
-	log "github.com/cihub/seelog"
-	. "github.com/xirtah/gopa/core/config"
-	"github.com/xirtah/gopa/core/global"
-	api "github.com/xirtah/gopa/core/http"
-	core "github.com/xirtah/gopa/core/index"
-	"github.com/xirtah/gopa/core/model"
-	"github.com/xirtah/gopa/core/queue"
-	"github.com/xirtah/gopa/modules/config"
-	"github.com/xirtah/gopa/modules/index/ui"
-	common "github.com/xirtah/gopa/modules/index/ui/common"
 	"runtime"
+
+	log "github.com/cihub/seelog"
+	. "github.com/xirtah/gopa-framework/core/config"
+	"github.com/xirtah/gopa-framework/core/global"
+	api "github.com/xirtah/gopa-framework/core/http"
+	core "github.com/xirtah/gopa-framework/core/index"
+	"github.com/xirtah/gopa-framework/core/model"
+	"github.com/xirtah/gopa-framework/core/queue"
+	"github.com/xirtah/gopa-spider/modules/config"
+	"github.com/xirtah/gopa-spider/modules/index/ui"
+	common "github.com/xirtah/gopa-spider/modules/index/ui/common"
 )
 
 type IndexModule struct {

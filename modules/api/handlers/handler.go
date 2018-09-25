@@ -17,7 +17,7 @@ limitations under the License.
 package http
 
 import (
-	"github.com/xirtah/gopa/core/http"
+	"github.com/xirtah/gopa-framework/core/http"
 )
 
 // API namespace

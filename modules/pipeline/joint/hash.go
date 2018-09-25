@@ -19,7 +19,7 @@ package joint
 import (
 	"crypto/sha1"
 	"fmt"
-	"github.com/xirtah/gopa/core/model"
+	"github.com/xirtah/gopa-framework/core/model"
 )
 
 type HashJoint struct {

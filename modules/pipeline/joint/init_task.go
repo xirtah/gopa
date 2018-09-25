@@ -18,8 +18,8 @@ package joint
 
 import (
 	"errors"
-	"github.com/xirtah/gopa/core/model"
-	"github.com/xirtah/gopa/core/util"
+	"github.com/xirtah/gopa-framework/core/model"
+	"github.com/xirtah/gopa-framework/core/util"
 	"time"
 )
 

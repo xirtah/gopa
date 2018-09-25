@@ -2,10 +2,11 @@ package sqlite
 
 import (
 	"fmt"
-	"github.com/xirtah/gopa/core/global"
-	"github.com/jinzhu/gorm"
 	"os"
 	"path"
+
+	"github.com/jinzhu/gorm"
+	"github.com/xirtah/gopa-framework/core/global"
 )
 
 // SQLiteConfig currently do nothing

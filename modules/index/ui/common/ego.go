@@ -5,7 +5,7 @@ package common
 
 import (
 	"fmt"
-	"github.com/xirtah/gopa/core/env"
+	"github.com/xirtah/gopa-framework/core/env"
 	"html"
 	"io"
 )
@@ -19,7 +19,7 @@ func Copyright(w io.Writer, config *UIConfig) error {
 	_, _ = io.WriteString(w, html.EscapeString(fmt.Sprint(env.GetVersion())))
 	_, _ = io.WriteString(w, " #<a title=\"")
 	_, _ = io.WriteString(w, html.EscapeString(fmt.Sprint(env.GetLastCommitLog())))
-	_, _ = io.WriteString(w, "\" href=\"https://github.com/xirtah/gopa/commit/")
+	_, _ = io.WriteString(w, "\" href=\"https://github.com/xirtah/gopa-spider/commit/")
 	_, _ = io.WriteString(w, html.EscapeString(fmt.Sprint(env.GetLastCommitHash())))
 	_, _ = io.WriteString(w, "\">")
 	_, _ = io.WriteString(w, html.EscapeString(fmt.Sprint(env.GetLastCommitHash())))

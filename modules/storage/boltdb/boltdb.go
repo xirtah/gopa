@@ -18,24 +18,25 @@ package boltdb
 
 import (
 	"fmt"
+	"net/http"
+	"strconv"
+	"strings"
+	"time"
+
 	"github.com/asdine/storm"
 	"github.com/asdine/storm/codec/protobuf"
 	"github.com/asdine/storm/q"
 	lz4 "github.com/bkaradzic/go-lz4"
 	"github.com/boltdb/bolt"
 	log "github.com/cihub/seelog"
-	"github.com/xirtah/gopa/core/global"
-	"github.com/xirtah/gopa/core/http"
-	"github.com/xirtah/gopa/core/model"
-	"github.com/xirtah/gopa/core/persist"
-	"github.com/xirtah/gopa/core/util"
-	"github.com/xirtah/gopa/modules/config"
-	"github.com/xirtah/gopa/modules/storage/boltdb/ui"
-	"github.com/xirtah/gopa/modules/ui/common"
-	"net/http"
-	"strconv"
-	"strings"
-	"time"
+	"github.com/xirtah/gopa-framework/core/global"
+	"github.com/xirtah/gopa-framework/core/http"
+	"github.com/xirtah/gopa-framework/core/model"
+	"github.com/xirtah/gopa-framework/core/persist"
+	"github.com/xirtah/gopa-framework/core/util"
+	"github.com/xirtah/gopa-spider/modules/config"
+	"github.com/xirtah/gopa-spider/modules/storage/boltdb/ui"
+	"github.com/xirtah/gopa-spider/modules/ui/common"
 )
 
 type BoltdbStore struct {

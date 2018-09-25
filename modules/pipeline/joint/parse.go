@@ -19,14 +19,15 @@ package joint
 import (
 	"bytes"
 	"fmt"
+	"strings"
+
 	"github.com/PuerkitoBio/goquery"
 	log "github.com/cihub/seelog"
-	"github.com/xirtah/gopa/core/filter"
-	"github.com/xirtah/gopa/core/model"
-	"github.com/xirtah/gopa/core/queue"
-	"github.com/xirtah/gopa/core/util"
-	"github.com/xirtah/gopa/modules/config"
-	"strings"
+	"github.com/xirtah/gopa-framework/core/filter"
+	"github.com/xirtah/gopa-framework/core/model"
+	"github.com/xirtah/gopa-framework/core/queue"
+	"github.com/xirtah/gopa-framework/core/util"
+	"github.com/xirtah/gopa-spider/modules/config"
 )
 
 type ParsePageJoint struct {
@@ -76,17 +77,35 @@ func (joint ParsePageJoint) Process(context *model.Context) error {
 
 	links := map[string]string{}
 
-	metadata := map[string]interface{}{}
+	metadata := map[string]interface{}{} //TODO: Investigate, do we not use this?
 
+	//log.Info("1")
 	doc.Find("meta").Each(func(i int, s *goquery.Selection) {
+		//log.Info("2")
 		name, exist := s.Attr("name")
+		//log.Info(name)
+		//log.Info("3")
 		name = strings.TrimSpace(name)
+		//log.Info("4")
 		if exist && len(name) > 0 {
+			//log.Info("5")
 			content, exist := s.Attr("content")
+			//log.Info("6")
 			if exist {
+				//log.Info("7")
 				metadata[strings.ToLower(name)] = content
 			}
+
+			//log.Info("8")
+			if name == "description" {
+				snapshot.Description = content
+			}
+
+			if name == "keywords" {
+				snapshot.Keywords = content
+			}
 		}
+		//log.Info("10")
 
 		//check meta refresh
 		equiv, exist := s.Attr("http-equiv")

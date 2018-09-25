@@ -17,15 +17,16 @@ limitations under the License.
 package storage
 
 import (
-	"github.com/xirtah/gopa/core/config"
-	"github.com/xirtah/gopa/core/errors"
-	"github.com/xirtah/gopa/core/global"
-	"github.com/xirtah/gopa/core/index"
-	"github.com/xirtah/gopa/core/persist"
-	"github.com/xirtah/gopa/modules/storage/boltdb"
-	"github.com/xirtah/gopa/modules/storage/elastic"
 	"os"
 	"path"
+
+	"github.com/xirtah/gopa-framework/core/config"
+	"github.com/xirtah/gopa-framework/core/errors"
+	"github.com/xirtah/gopa-framework/core/global"
+	"github.com/xirtah/gopa-framework/core/index"
+	"github.com/xirtah/gopa-framework/core/persist"
+	"github.com/xirtah/gopa-spider/modules/storage/boltdb"
+	"github.com/xirtah/gopa-spider/modules/storage/elastic"
 )
 
 var impl boltdb.BoltdbStore

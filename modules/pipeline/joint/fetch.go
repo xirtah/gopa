@@ -18,17 +18,18 @@ package joint
 
 import (
 	"fmt"
-	log "github.com/cihub/seelog"
-	"github.com/xirtah/gopa/core/errors"
-	"github.com/xirtah/gopa/core/global"
-	"github.com/xirtah/gopa/core/model"
-	"github.com/xirtah/gopa/core/queue"
-	"github.com/xirtah/gopa/core/stats"
-	"github.com/xirtah/gopa/core/util"
-	"github.com/xirtah/gopa/modules/config"
 	"net/http"
 	"strings"
 	"time"
+
+	log "github.com/cihub/seelog"
+	"github.com/xirtah/gopa-framework/core/errors"
+	"github.com/xirtah/gopa-framework/core/global"
+	"github.com/xirtah/gopa-framework/core/model"
+	"github.com/xirtah/gopa-framework/core/queue"
+	"github.com/xirtah/gopa-framework/core/stats"
+	"github.com/xirtah/gopa-framework/core/util"
+	"github.com/xirtah/gopa-spider/modules/config"
 )
 
 const proxy model.ParaKey = "proxy"

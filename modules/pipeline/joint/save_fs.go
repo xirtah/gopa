@@ -17,14 +17,15 @@ limitations under the License.
 package joint
 
 import (
-	log "github.com/cihub/seelog"
-	"github.com/xirtah/gopa/core/global"
-	"github.com/xirtah/gopa/core/model"
-	"github.com/xirtah/gopa/core/util"
 	"net/url"
 	"os"
 	"path"
 	"strings"
+
+	log "github.com/cihub/seelog"
+	"github.com/xirtah/gopa-framework/core/global"
+	"github.com/xirtah/gopa-framework/core/model"
+	"github.com/xirtah/gopa-framework/core/util"
 )
 
 type SaveSnapshotToFileSystemJoint struct {

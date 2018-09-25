@@ -3,8 +3,8 @@ package stats
 import (
 	"fmt"
 	log "github.com/cihub/seelog"
-	. "github.com/xirtah/gopa/core/config"
-	"github.com/xirtah/gopa/core/stats"
+	. "github.com/xirtah/gopa-framework/core/config"
+	"github.com/xirtah/gopa-framework/core/stats"
 	"github.com/quipo/statsd"
 	"sync"
 	"time"

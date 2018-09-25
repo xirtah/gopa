@@ -21,8 +21,8 @@ import (
 	"fmt"
 	lz4 "github.com/bkaradzic/go-lz4"
 	log "github.com/cihub/seelog"
-	"github.com/xirtah/gopa/core/errors"
-	"github.com/xirtah/gopa/core/index"
+	"github.com/xirtah/gopa-framework/core/errors"
+	"github.com/xirtah/gopa-framework/core/index"
 )
 
 type ElasticsearchStore struct {

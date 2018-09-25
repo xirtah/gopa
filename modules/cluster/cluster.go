@@ -2,8 +2,8 @@ package cluster
 
 import (
 	log "github.com/cihub/seelog"
-	. "github.com/xirtah/gopa/core/config"
-	"github.com/xirtah/gopa/modules/cluster/discovery/raft"
+	. "github.com/xirtah/gopa-framework/core/config"
+	"github.com/xirtah/gopa-spider/modules/cluster/discovery/raft"
 )
 
 type ClusterModule struct {

@@ -100,9 +100,9 @@ init-version:
 
 
 update-generated-file:
-	@echo "update generated info"
-	@echo -e "package env\n\nconst lastCommitLog = \""`git log -1 --pretty=format:"%h, %ad, %an, %s"` "\"\nconst buildDate = \"`date`\"" > core/env/generated.go
-	@echo -e "\nconst version  = \"$(GOPA_VERSION)\"" >> core/env/generated.go
+	# @echo "update generated info"
+	# @echo -e "package env\n\nconst lastCommitLog = \""`git log -1 --pretty=format:"%h, %ad, %an, %s"` "\"\nconst buildDate = \"`date`\"" > core/env/generated.go
+	# @echo -e "\nconst version  = \"$(GOPA_VERSION)\"" >> core/env/generated.go
 
 
 restore-generated-file:
@@ -146,7 +146,7 @@ fetch-depends:
 	$(GO) get github.com/kardianos/osext
 	$(GO) get github.com/zeebo/sbloom
 	$(GO) get github.com/asdine/storm
-	$(GO) get github.com/julienschmidt/httprouter
+	$(GO) get github.com/xirtah/gopa-framework/vendor/github.com/julienschmidt/httprouter
 	$(GO) get github.com/rs/xid
 	$(GO) get github.com/seiflotfy/cuckoofilter
 	$(GO) get github.com/hashicorp/raft
@@ -243,5 +243,5 @@ cyclo:
 	gocyclo -top 10 -over 12 $$(ls -d */ | grep -v vendor)
 
 benchmarks:
-	go test github.com/xirtah/gopa/core/util -benchtime=1s -bench ^Benchmark -run ^$
-	go test github.com/xirtah/gopa//modules/crawler/pipe -benchtime=1s -bench  ^Benchmark -run ^$
+	go test github.com/xirtah/gopa-framework/core/util -benchtime=1s -bench ^Benchmark -run ^$
+	go test github.com/xirtah/gopa-spider//modules/crawler/pipe -benchtime=1s -bench  ^Benchmark -run ^$

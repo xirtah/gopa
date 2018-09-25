@@ -18,11 +18,12 @@ package ajax
 
 import (
 	"encoding/json"
-	log "github.com/cihub/seelog"
-	"github.com/xirtah/gopa/core/config"
-	api "github.com/xirtah/gopa/core/http"
-	logging "github.com/xirtah/gopa/core/logger"
 	"net/http"
+
+	log "github.com/cihub/seelog"
+	"github.com/xirtah/gopa-framework/core/config"
+	api "github.com/xirtah/gopa-framework/core/http"
+	logging "github.com/xirtah/gopa-framework/core/logger"
 )
 
 // Ajax dealing with AJAX request

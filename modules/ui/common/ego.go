@@ -5,7 +5,7 @@ package common
 
 import (
 	"fmt"
-	"github.com/xirtah/gopa/core/http"
+	"github.com/xirtah/gopa-framework/core/http"
 	"html"
 	"io"
 	"net/http"
@@ -17,7 +17,7 @@ func Body(w io.Writer) error {
 	return nil
 }
 func Footer(w io.Writer) error {
-	_, _ = io.WriteString(w, "\n\n<div class=\"tm-footer\">\n    <div class=\"uk-container uk-container-center uk-text-center\">\n        <br>\n        <hr class=\"uk-article-divider\" >\n        <ul class=\"uk-subnav uk-subnav-line uk-flex-center\">\n            <li><a href=\"http://github.com/xirtah/gopa\">GitHub</a></li>\n            <li><a href=\"http://github.com/xirtah/gopa/issues\">Issues</a></li>\n            <li><a href=\"https://github.com/xirtah/gopa/releases\">Releases</a></li>\n            <li><a href=\"http://github.com/xirtah/gopa/blob/master/CHANGES.md\">Changelog</a></li>\n        </ul>\n\n        <div class=\"uk-panel\">\n            <p>Licensed under <a target=\"_blank\" href=\"https://github.com/xirtah/gopa/blob/master/LICENSE\">Apache License, Version 2.0</a>.</p>\n            <a href=\"/admin/\"><img src=\"/static/assets/img/logo.svg\" height=\"30\" title=\"GOPA\" alt=\"GOPA\"></a>\n        </div>\n\n    </div>\n</div>\n</body>\n<script src=\"/static/assets/js/ie_detect.js\"></script>\n</html>\n")
+	_, _ = io.WriteString(w, "\n\n<div class=\"tm-footer\">\n    <div class=\"uk-container uk-container-center uk-text-center\">\n        <br>\n        <hr class=\"uk-article-divider\" >\n        <ul class=\"uk-subnav uk-subnav-line uk-flex-center\">\n            <li><a href=\"http://github.com/xirtah/gopa\">GitHub</a></li>\n            <li><a href=\"http://github.com/xirtah/gopa-spider/issues\">Issues</a></li>\n            <li><a href=\"https://github.com/xirtah/gopa-spider/releases\">Releases</a></li>\n            <li><a href=\"http://github.com/xirtah/gopa-spider/blob/master/CHANGES.md\">Changelog</a></li>\n        </ul>\n\n        <div class=\"uk-panel\">\n            <p>Licensed under <a target=\"_blank\" href=\"https://github.com/xirtah/gopa-spider/blob/master/LICENSE\">Apache License, Version 2.0</a>.</p>\n            <a href=\"/admin/\"><img src=\"/static/assets/img/logo.svg\" height=\"30\" title=\"GOPA\" alt=\"GOPA\"></a>\n        </div>\n\n    </div>\n</div>\n</body>\n<script src=\"/static/assets/js/ie_detect.js\"></script>\n</html>\n")
 	return nil
 }
 func Head(w io.Writer, title string, customHeaderBlock string) error {
@@ -88,6 +88,6 @@ func OffCanvas(w io.Writer, current string) error {
 		}
 	}
 
-	_, _ = io.WriteString(w, "\n        </ul></div>\n      </li>\n      <li class=\"uk-nav-divider\"></li>\n      <li><a href=\"http://github.com/xirtah/gopa\">GitHub</a></li>\n      <li><a href=\"http://github.com/xirtah/gopa/issues\">Issues</a></li>\n      <li><a href=\"https://github.com/xirtah/gopa/releases\">Releases</a></li>\n      <li><a href=\"http://github.com/xirtah/gopa/blob/master/CHANGES.md\">Changelog</a></li>\n    </ul>\n\n  </div>\n\n</div>\n")
+	_, _ = io.WriteString(w, "\n        </ul></div>\n      </li>\n      <li class=\"uk-nav-divider\"></li>\n      <li><a href=\"http://github.com/xirtah/gopa\">GitHub</a></li>\n      <li><a href=\"http://github.com/xirtah/gopa-spider/issues\">Issues</a></li>\n      <li><a href=\"https://github.com/xirtah/gopa-spider/releases\">Releases</a></li>\n      <li><a href=\"http://github.com/xirtah/gopa-spider/blob/master/CHANGES.md\">Changelog</a></li>\n    </ul>\n\n  </div>\n\n</div>\n")
 	return nil
 }

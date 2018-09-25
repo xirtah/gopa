@@ -18,8 +18,8 @@ package sqlite
 
 import (
 	"fmt"
-	"github.com/xirtah/gopa/core/model"
-	"github.com/xirtah/gopa/core/util"
+	"github.com/xirtah/gopa-framework/core/model"
+	"github.com/xirtah/gopa-framework/core/util"
 	"github.com/jinzhu/gorm"
 	_ "github.com/mattn/go-sqlite3"
 	"testing"

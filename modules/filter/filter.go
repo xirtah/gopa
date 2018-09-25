@@ -2,11 +2,11 @@ package filter
 
 import (
 	log "github.com/cihub/seelog"
-	. "github.com/xirtah/gopa/core/config"
-	"github.com/xirtah/gopa/core/filter"
-	. "github.com/xirtah/gopa/core/filter"
-	"github.com/xirtah/gopa/modules/config"
-	"github.com/xirtah/gopa/modules/filter/impl"
+	. "github.com/xirtah/gopa-framework/core/config"
+	"github.com/xirtah/gopa-framework/core/filter"
+	. "github.com/xirtah/gopa-framework/core/filter"
+	"github.com/xirtah/gopa-spider/modules/config"
+	"github.com/xirtah/gopa-spider/modules/filter/impl"
 	"sync"
 )
 

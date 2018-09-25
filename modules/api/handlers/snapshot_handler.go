@@ -17,15 +17,16 @@ limitations under the License.
 package http
 
 import (
-	log "github.com/cihub/seelog"
-	. "github.com/xirtah/gopa/core/http"
-	"github.com/xirtah/gopa/core/model"
-	"github.com/xirtah/gopa/core/persist"
-	"github.com/xirtah/gopa/modules/config"
-	_ "github.com/jmoiron/jsonq"
-	"github.com/julienschmidt/httprouter"
 	"net/http"
 	"strconv"
+
+	log "github.com/cihub/seelog"
+	_ "github.com/jmoiron/jsonq"
+	. "github.com/xirtah/gopa-framework/core/http"
+	"github.com/xirtah/gopa-framework/core/model"
+	"github.com/xirtah/gopa-framework/core/persist"
+	"github.com/xirtah/gopa-framework/core/http/router"
+	"github.com/xirtah/gopa-spider/modules/config"
 )
 
 func (this API) SnapshotAction(w http.ResponseWriter, req *http.Request) {

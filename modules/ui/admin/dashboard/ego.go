@@ -5,7 +5,7 @@ package dashboard
 
 import (
 	"fmt"
-	"github.com/xirtah/gopa/modules/ui/common"
+	"github.com/xirtah/gopa-spider/modules/ui/common"
 	"io"
 	"net/http"
 )

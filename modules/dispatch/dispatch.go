@@ -2,12 +2,12 @@ package dispatch
 
 import (
 	log "github.com/cihub/seelog"
-	cfg "github.com/xirtah/gopa/core/config"
-	"github.com/xirtah/gopa/core/model"
-	"github.com/xirtah/gopa/core/queue"
-	"github.com/xirtah/gopa/core/stats"
-	"github.com/xirtah/gopa/core/util"
-	"github.com/xirtah/gopa/modules/config"
+	cfg "github.com/xirtah/gopa-framework/core/config"
+	"github.com/xirtah/gopa-framework/core/model"
+	"github.com/xirtah/gopa-framework/core/queue"
+	"github.com/xirtah/gopa-framework/core/stats"
+	"github.com/xirtah/gopa-framework/core/util"
+	"github.com/xirtah/gopa-spider/modules/config"
 	"time"
 )
 

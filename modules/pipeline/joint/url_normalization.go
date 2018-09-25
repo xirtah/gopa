@@ -24,9 +24,9 @@ import (
 
 	"github.com/PuerkitoBio/purell"
 	log "github.com/cihub/seelog"
-	"github.com/xirtah/gopa/core/errors"
-	"github.com/xirtah/gopa/core/model"
-	"github.com/xirtah/gopa/core/util"
+	"github.com/xirtah/gopa-framework/core/errors"
+	"github.com/xirtah/gopa-framework/core/model"
+	"github.com/xirtah/gopa-framework/core/util"
 )
 
 // UrlNormalizationJoint used to cleanup url and do normalization
@@ -182,6 +182,7 @@ func (joint UrlNormalizationJoint) Process(context *model.Context) error {
 	}
 
 	////resolve host specific filter
+	//log.Info("F: | fa:", joint.GetBool(followAllDomain, false), " fs:", joint.GetBool(followSubDomain, true), " r:", referenceURI, " c:", currentURI)
 	if !joint.GetBool(followAllDomain, false) && joint.GetBool(followSubDomain, true) && currentURI != nil && referenceURI != nil {
 		log.Tracef("try to check host rule, %s vs %s", referenceURI.Host, currentURI.Host)
 
@@ -193,6 +194,11 @@ func (joint UrlNormalizationJoint) Process(context *model.Context) error {
 			context.End("host missmatch," + referenceURI.Host + " vs " + currentURI.Host)
 			return nil //known exception, not error
 		}
+	} else if !joint.GetBool(followAllDomain, false) && !joint.GetBool(followSubDomain, true) && referenceURI != nil {
+		//log.Info("FOLLOW NONE! | r:", referenceURI, " c:", currentURI)
+		//do not follow any links
+		context.End("host missmatch," + referenceURI.Host + " vs " + currentURI.Host)
+		return nil
 	}
 
 	context.Set(model.CONTEXT_TASK_URL, url)

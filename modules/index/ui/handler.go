@@ -1,7 +1,7 @@
 package ui
 
 import (
-	"github.com/julienschmidt/httprouter"
+	"github.com/xirtah/gopa-framework/core/http/router"
 
 	"fmt"
 	"net/http"
@@ -9,16 +9,16 @@ import (
 
 	log "github.com/cihub/seelog"
 	"github.com/emirpasic/gods/sets/hashset"
-	"github.com/xirtah/gopa/core/errors"
-	"github.com/xirtah/gopa/core/http"
-	core "github.com/xirtah/gopa/core/index"
-	"github.com/xirtah/gopa/core/model"
-	"github.com/xirtah/gopa/core/persist"
-	"github.com/xirtah/gopa/core/util"
-	"github.com/xirtah/gopa/modules/config"
-	common "github.com/xirtah/gopa/modules/index/ui/common"
-	handler "github.com/xirtah/gopa/modules/index/ui/handler"
-	mobileHandler "github.com/xirtah/gopa/modules/index/ui/m/handler"
+	"github.com/xirtah/gopa-framework/core/errors"
+	"github.com/xirtah/gopa-framework/core/http"
+	core "github.com/xirtah/gopa-framework/core/index"
+	"github.com/xirtah/gopa-framework/core/model"
+	"github.com/xirtah/gopa-framework/core/persist"
+	"github.com/xirtah/gopa-framework/core/util"
+	"github.com/xirtah/gopa-spider/modules/config"
+	common "github.com/xirtah/gopa-spider/modules/index/ui/common"
+	handler "github.com/xirtah/gopa-spider/modules/index/ui/handler"
+	mobileHandler "github.com/xirtah/gopa-spider/modules/index/ui/m/handler"
 )
 
 // UserUI is the user namespace, public web

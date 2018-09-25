@@ -2,19 +2,20 @@ package admin
 
 import (
 	"errors"
-	"github.com/xirtah/gopa/core/global"
-	"github.com/xirtah/gopa/core/http"
-	"github.com/xirtah/gopa/core/model"
-	"github.com/xirtah/gopa/core/persist"
-	"github.com/xirtah/gopa/modules/config"
-	"github.com/xirtah/gopa/modules/ui/admin/console"
-	"github.com/xirtah/gopa/modules/ui/admin/dashboard"
-	"github.com/xirtah/gopa/modules/ui/admin/explore"
-	"github.com/xirtah/gopa/modules/ui/admin/setting"
-	"github.com/xirtah/gopa/modules/ui/admin/tasks"
-	"github.com/julienschmidt/httprouter"
-	"gopkg.in/yaml.v2"
 	"net/http"
+
+	"github.com/xirtah/gopa-framework/core/global"
+	"github.com/xirtah/gopa-framework/core/http"
+	"github.com/xirtah/gopa-framework/core/http/router"
+	"github.com/xirtah/gopa-framework/core/model"
+	"github.com/xirtah/gopa-framework/core/persist"
+	"github.com/xirtah/gopa-spider/modules/config"
+	"github.com/xirtah/gopa-spider/modules/ui/admin/console"
+	"github.com/xirtah/gopa-spider/modules/ui/admin/dashboard"
+	"github.com/xirtah/gopa-spider/modules/ui/admin/explore"
+	"github.com/xirtah/gopa-spider/modules/ui/admin/setting"
+	"github.com/xirtah/gopa-spider/modules/ui/admin/tasks"
+	"gopkg.in/yaml.v2"
 )
 
 type AdminUI struct {
