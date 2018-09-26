@@ -5,7 +5,7 @@ package common
 
 import (
 	"fmt"
-	"github.com/xirtah/gopa-spider/config/version"
+	"github.com/xirtah/gopa-spider/core/version"
 	"html"
 	"io"
 )

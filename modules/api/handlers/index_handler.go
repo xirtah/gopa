@@ -24,7 +24,7 @@ import (
 	"github.com/xirtah/gopa-framework/core/global"
 	"github.com/xirtah/gopa-framework/core/http/router"
 
-	v "github.com/xirtah/gopa-spider/config/version"
+	v "github.com/xirtah/gopa-spider/core/version"
 )
 
 // IndexAction returns cluster health information

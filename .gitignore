@@ -47,4 +47,3 @@ bin/
 /dist
 gopa
 gopa.exe
-config/version/generated.go

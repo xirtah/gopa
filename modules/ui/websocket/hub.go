@@ -14,7 +14,7 @@ import (
 	"github.com/xirtah/gopa-framework/core/logger"
 	"github.com/xirtah/gopa-framework/core/stats"
 
-	"github.com/xirtah/gopa-spider/config/version"
+	"github.com/xirtah/gopa-spider/core/version"
 )
 
 // Hub maintains the set of active connections and broadcasts messages to the

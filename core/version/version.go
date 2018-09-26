@@ -16,7 +16,9 @@ limitations under the License.
 
 package version
 
-import "strings"
+import (
+	"strings"
+)
 
 // GetWelcomeMessage print welcome message
 func GetWelcomeMessage() string {

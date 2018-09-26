@@ -37,7 +37,7 @@ import (
 	"github.com/xirtah/gopa-framework/core/module"
 	"github.com/xirtah/gopa-framework/core/stats"
 	"github.com/xirtah/gopa-framework/core/util"
-	"github.com/xirtah/gopa-spider/config/version"
+	"github.com/xirtah/gopa-spider/core/version"
 	"github.com/xirtah/gopa-spider/modules"
 	"github.com/xirtah/gopa-spider/plugins"
 )
