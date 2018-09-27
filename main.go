@@ -29,11 +29,11 @@ import (
 	"syscall"
 	"time"
 
-	log "github.com/cihub/seelog"
 	"github.com/xirtah/gopa-framework/core/daemon"
 	"github.com/xirtah/gopa-framework/core/env"
 	"github.com/xirtah/gopa-framework/core/global"
 	"github.com/xirtah/gopa-framework/core/logger"
+	log "github.com/xirtah/gopa-framework/core/logger/seelog"
 	"github.com/xirtah/gopa-framework/core/module"
 	"github.com/xirtah/gopa-framework/core/stats"
 	"github.com/xirtah/gopa-framework/core/util"
@@ -101,7 +101,7 @@ func main() {
 
 	onStart()
 
-	var logLevel = flag.String("log", "info", "the log level,options:trace,debug,info,warn,error")
+	// var logLevel = flag.String("log", "info", "the log level,options:trace,debug,info,warn,error")
 	var configFile = flag.String("config", "gopa.yml", "the location of config file")
 	var isDaemon = flag.Bool("daemon", false, "run in background as daemon")
 	var pidfile = flag.String("pidfile", "", "pidfile path (only for daemon)")
@@ -111,17 +111,19 @@ func main() {
 	var httpprof = flag.String("pprof", "", "enable and setup pprof/expvar service, eg: localhost:6060 , the endpoint will be: http://localhost:6060/debug/pprof/ and http://localhost:6060/debug/vars")
 	var isDebug = flag.Bool("debug", false, "run in debug mode, wi")
 
-	var logDir = flag.String("log_path", "log", "the log path")
+	// var logDir = flag.String("log_path", "log", "the log path")
 
 	flag.Parse()
-	logger.SetLogging(env.EmptyEnv(), *logLevel, *logDir)
+	//logger.SetLogging(env.EmptyEnv(), *logLevel, *logDir)
+	logger.SetLogging(env.EmptyEnv(), "", "")
 
 	environment = env.Environment(*configFile)
 	environment.IsDebug = *isDebug
 	//put env into global registrar
 	global.RegisterEnv(environment)
 
-	logger.SetLogging(environment, *logLevel, *logDir)
+	//logger.SetLogging(environment, *logLevel, *logDir)
+	logger.SetLogging(environment, "", "")
 
 	//check instance lock
 	util.CheckInstanceLock(environment.SystemConfig.GetWorkingDir())
