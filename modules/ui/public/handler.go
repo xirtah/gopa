@@ -21,7 +21,7 @@ import (
 	"encoding/base64"
 	"net/http"
 
-	log "github.com/cihub/seelog"
+	log "github.com/xirtah/gopa-framework/core/logger/seelog"
 	"github.com/emirpasic/gods/sets/hashset"
 	"github.com/google/go-github/github"
 	"github.com/xirtah/gopa-framework/core/http"

@@ -20,10 +20,10 @@ import (
 	"encoding/json"
 	"net/http"
 
-	log "github.com/cihub/seelog"
 	"github.com/xirtah/gopa-framework/core/config"
 	api "github.com/xirtah/gopa-framework/core/http"
 	logging "github.com/xirtah/gopa-framework/core/logger"
+	log "github.com/xirtah/gopa-framework/core/logger/seelog"
 )
 
 // Ajax dealing with AJAX request

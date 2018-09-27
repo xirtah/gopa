@@ -5,7 +5,7 @@ import (
 	"os"
 	"time"
 
-	log "github.com/cihub/seelog"
+	log "github.com/xirtah/gopa-framework/core/logger/seelog"
 	. "github.com/xirtah/gopa-framework/core/config"
 	"github.com/xirtah/gopa-framework/core/global"
 	. "github.com/xirtah/gopa-framework/core/queue"

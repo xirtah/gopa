@@ -21,8 +21,8 @@ import (
 	"net/http"
 	"strconv"
 
-	log "github.com/cihub/seelog"
-	logger "github.com/cihub/seelog"
+	log "github.com/xirtah/gopa-framework/core/logger/seelog"
+	logger "github.com/xirtah/gopa-framework/core/logger/seelog"
 	api "github.com/xirtah/gopa-framework/core/http"
 	"github.com/xirtah/gopa-framework/core/http/router"
 	"github.com/xirtah/gopa-framework/core/model"

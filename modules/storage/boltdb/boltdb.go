@@ -28,7 +28,7 @@ import (
 	"github.com/asdine/storm/q"
 	lz4 "github.com/bkaradzic/go-lz4"
 	"github.com/boltdb/bolt"
-	log "github.com/cihub/seelog"
+	log "github.com/xirtah/gopa-framework/core/logger/seelog"
 	"github.com/xirtah/gopa-framework/core/global"
 	"github.com/xirtah/gopa-framework/core/http"
 	"github.com/xirtah/gopa-framework/core/model"

@@ -20,7 +20,7 @@ import (
 	"encoding/base64"
 	"fmt"
 	lz4 "github.com/bkaradzic/go-lz4"
-	log "github.com/cihub/seelog"
+	log "github.com/xirtah/gopa-framework/core/logger/seelog"
 	"github.com/xirtah/gopa-framework/core/errors"
 	"github.com/xirtah/gopa-framework/core/index"
 )

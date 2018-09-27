@@ -28,7 +28,7 @@ import (
 	"encoding/binary"
 	"errors"
 	"fmt"
-	log "github.com/cihub/seelog"
+	log "github.com/xirtah/gopa-framework/core/logger/seelog"
 	"io"
 	"math/rand"
 	"os"

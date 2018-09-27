@@ -20,7 +20,7 @@ import (
 	"net/http"
 	"strconv"
 
-	log "github.com/cihub/seelog"
+	log "github.com/xirtah/gopa-framework/core/logger/seelog"
 	_ "github.com/jmoiron/jsonq"
 	. "github.com/xirtah/gopa-framework/core/http"
 	"github.com/xirtah/gopa-framework/core/model"

@@ -17,7 +17,7 @@ limitations under the License.
 package impl
 
 import (
-	log "github.com/cihub/seelog"
+	log "github.com/xirtah/gopa-framework/core/logger/seelog"
 	"github.com/xirtah/gopa-framework/core/util"
 	. "github.com/zeebo/sbloom"
 	"hash/fnv"

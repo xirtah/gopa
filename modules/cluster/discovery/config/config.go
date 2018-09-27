@@ -3,7 +3,7 @@ package config
 import (
 	"path"
 
-	log "github.com/cihub/seelog"
+	log "github.com/xirtah/gopa-framework/core/logger/seelog"
 	"github.com/xirtah/gopa-framework/core/global"
 )
 

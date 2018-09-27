@@ -13,7 +13,7 @@ max_num_of_instances: 5
 
 tls_enabled: false
 
-logging.level: debug
+logging.loglevel: info
 
 network:
   host: 127.0.0.1

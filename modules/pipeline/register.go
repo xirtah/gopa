@@ -17,7 +17,7 @@ limitations under the License.
 package pipeline
 
 import (
-	log "github.com/cihub/seelog"
+	log "github.com/xirtah/gopa-framework/core/logger/seelog"
 	"github.com/xirtah/gopa-framework/core/model"
 	"github.com/xirtah/gopa-spider/modules/pipeline/joint"
 )

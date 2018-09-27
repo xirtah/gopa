@@ -2,7 +2,7 @@ package persist
 
 import (
 	"fmt"
-	log "github.com/cihub/seelog"
+	log "github.com/xirtah/gopa-framework/core/logger/seelog"
 	api "github.com/xirtah/gopa-framework/core/persist"
 	"github.com/jinzhu/gorm"
 	"sync"

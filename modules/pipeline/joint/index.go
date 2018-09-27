@@ -20,7 +20,7 @@ import (
 	"crypto/md5"
 	"encoding/hex"
 	"encoding/json"
-	log "github.com/cihub/seelog"
+	log "github.com/xirtah/gopa-framework/core/logger/seelog"
 	"github.com/xirtah/gopa-framework/core/model"
 	"github.com/xirtah/gopa-framework/core/queue"
 	"github.com/xirtah/gopa-spider/modules/config"

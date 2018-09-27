@@ -20,9 +20,9 @@ import (
 	"encoding/json"
 	"strings"
 
-	log "github.com/cihub/seelog"
 	"github.com/xirtah/gopa-framework/core/global"
 	logging "github.com/xirtah/gopa-framework/core/logger"
+	log "github.com/xirtah/gopa-framework/core/logger/seelog"
 	"github.com/xirtah/gopa-framework/core/model"
 	"github.com/xirtah/gopa-framework/core/queue"
 	"github.com/xirtah/gopa-framework/core/util"
