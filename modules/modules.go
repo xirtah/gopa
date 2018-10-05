@@ -18,12 +18,12 @@ package modules
 
 import (
 	"github.com/xirtah/gopa-framework/core/module"
+	"github.com/xirtah/gopa-framework/modules/persist"
 	"github.com/xirtah/gopa-spider/modules/api"
 	"github.com/xirtah/gopa-spider/modules/cluster"
 	"github.com/xirtah/gopa-spider/modules/dispatch"
 	"github.com/xirtah/gopa-spider/modules/filter"
 	"github.com/xirtah/gopa-spider/modules/index"
-	"github.com/xirtah/gopa-spider/modules/persist"
 	"github.com/xirtah/gopa-spider/modules/pipeline"
 	"github.com/xirtah/gopa-spider/modules/queue"
 	"github.com/xirtah/gopa-spider/modules/stats"
@@ -33,15 +33,15 @@ import (
 
 // Register is where modules are registered
 func Register() {
-	module.Register(module.Database, persist.DatabaseModule{})
+	module.Register(module.Database, persist.DatabaseModule{}) //TODO: Update to use the framework version
 	module.Register(module.Storage, storage.StorageModule{})
 	module.Register(module.Filter, filter.FilterModule{})
 	module.Register(module.Stats, stats.SimpleStatsModule{})
 	module.Register(module.Queue, queue.DiskQueue{})
-	module.Register(module.Index, index.IndexModule{})
+	module.Register(module.Index, index.IndexModule{}) //TODO: Comment out
 	module.Register(module.System, pipeline.PipelineFrameworkModule{})
 	module.Register(module.System, dispatch.DispatchModule{})
 	module.Register(module.System, cluster.ClusterModule{})
-	module.Register(module.System, ui.UIModule{})
+	module.Register(module.System, ui.UIModule{}) //TODO: Comment out
 	module.Register(module.System, api.APIModule{})
 }

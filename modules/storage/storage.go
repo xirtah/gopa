@@ -17,12 +17,8 @@ limitations under the License.
 package storage
 
 import (
-	"os"
-	"path"
-
 	"github.com/xirtah/gopa-framework/core/config"
 	"github.com/xirtah/gopa-framework/core/errors"
-	"github.com/xirtah/gopa-framework/core/global"
 	"github.com/xirtah/gopa-framework/core/index"
 	"github.com/xirtah/gopa-framework/core/persist"
 	"github.com/xirtah/gopa-spider/modules/storage/boltdb"
@@ -53,7 +49,7 @@ var (
 		Boltdb: &BoltdbConfig{},
 		Elastic: &index.ElasticsearchConfig{
 			Endpoint:    "http://localhost:9200",
-			IndexPrefix: "gopa-",
+			IndexPrefix: "gopa-", //TODO: Add support for elasticsearch credentials
 		},
 	}
 )
@@ -63,35 +59,37 @@ func getDefaultConfig() StorageConfig {
 }
 
 func (module StorageModule) Start(cfg *config.Config) {
+	//Sameer - Looks like the storage module is used to store the snapshots of each url hit
 
 	//init config
 	config := getDefaultConfig()
 	cfg.Unpack(&config)
 	storeConfig = &config
 
-	if config.Driver == "elasticsearch" {
+	switch config.Driver {
+	case "elasticsearch":
 		client := index.ElasticsearchClient{Config: config.Elastic}
 		handler := elastic.ElasticsearchStore{Client: &client}
 		persist.RegisterKVHandler(handler)
-	} else if config.Driver == "boltdb" {
-
-		folder := path.Join(global.Env().SystemConfig.GetWorkingDir(), "blob")
-		os.MkdirAll(folder, 0777)
-		impl = boltdb.BoltdbStore{FileName: path.Join(folder, "/bolt.db")}
-		err := impl.Open()
-		if err != nil {
-			panic(err)
-		}
-		persist.RegisterKVHandler(impl)
-	} else {
+	//TODO: Consider removing boltdb as a storage module driver as it does not support concurrent connections
+	// case "boltdb":
+	// 	folder := path.Join(global.Env().SystemConfig.GetWorkingDir(), "blob")
+	// 	os.MkdirAll(folder, 0777)
+	// 	impl = boltdb.BoltdbStore{FileName: path.Join(folder, "/bolt.db")}
+	// 	err := impl.Open()
+	// 	if err != nil {
+	// 		panic(err)
+	// 	}
+	// 	persist.RegisterKVHandler(impl)
+	default:
 		panic(errors.Errorf("invalid driver, %s", config.Driver))
 	}
 }
 
 func (module StorageModule) Stop() error {
-	if storeConfig.Driver == "boltdb" {
-		return impl.Close()
-	}
+	// if storeConfig.Driver == "boltdb" {
+	// 	return impl.Close()
+	// }
 	return nil
 }
 

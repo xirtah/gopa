@@ -13,7 +13,7 @@ max_num_of_instances: 5
 
 tls_enabled: false
 
-logging.loglevel: info
+logging.loglevel: trace
 
 network:
   host: 127.0.0.1
@@ -287,9 +287,10 @@ modules:
 
 - name: dispatch
   enabled: true
-  failed_retry: false
+  failure_retry: false
   new_task: true
   update_task: false
+  max_concurrent_fetch_tasks: 1000
 
 - name: api
   enabled: true
@@ -316,13 +317,12 @@ modules:
 
 - name: storage
   enabled: true
-#  driver: elasticsearch
-#  elasticsearch:
-#    endpoint: http://localhost:9200
-#    index_prefix: gopa-
-#    username: elastic
-#    password: changeme
-  driver: boltdb
+  driver: elasticsearch
+  elasticsearch:
+    endpoint: http://localhost:9200
+    index_prefix: gopa-
+    #username: elastic
+    #password: changeme
 
 - name: index
   enabled: true
