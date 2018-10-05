@@ -23,8 +23,8 @@ import (
 	"strings"
 
 	"github.com/PuerkitoBio/purell"
-	log "github.com/xirtah/gopa-framework/core/logger/seelog"
 	"github.com/xirtah/gopa-framework/core/errors"
+	log "github.com/xirtah/gopa-framework/core/logger/seelog"
 	"github.com/xirtah/gopa-framework/core/model"
 	"github.com/xirtah/gopa-framework/core/util"
 )
@@ -182,22 +182,20 @@ func (joint UrlNormalizationJoint) Process(context *model.Context) error {
 	}
 
 	////resolve host specific filter
-	//log.Info("F: | fa:", joint.GetBool(followAllDomain, false), " fs:", joint.GetBool(followSubDomain, true), " r:", referenceURI, " c:", currentURI)
 	if !joint.GetBool(followAllDomain, false) && joint.GetBool(followSubDomain, true) && currentURI != nil && referenceURI != nil {
 		log.Tracef("try to check host rule, %s vs %s", referenceURI.Host, currentURI.Host)
 
 		//TODO: Bug occurs here if we seed a site that did a redirect and have followSubDomain set to true and followAllDomain set to false
 		//e.g. google.com -> www.google.com, it thinks there is a host mismatch (potentially should not worry about host mismatches in redirects?)
 		//Update: Not sure if this still occurs after the reworking of logic - will need to write unit tests
-		if !strings.Contains(currentURI.Host, referenceURI.Host) {
-			log.Debug("host mismatch,", referenceURI.Host, " vs ", currentURI.Host)
-			context.End("host missmatch," + referenceURI.Host + " vs " + currentURI.Host)
+		if !strings.Contains(strings.ToLower(currentURI.Host), strings.ToLower(referenceURI.Host)) {
+			log.Debug("host mismatch,", strings.ToLower(referenceURI.Host), " vs ", strings.ToLower(currentURI.Host))
+			context.End("host missmatch," + strings.ToLower(referenceURI.Host) + " vs " + strings.ToLower(currentURI.Host))
 			return nil //known exception, not error
 		}
 	} else if !joint.GetBool(followAllDomain, false) && !joint.GetBool(followSubDomain, true) && referenceURI != nil {
-		//log.Info("FOLLOW NONE! | r:", referenceURI, " c:", currentURI)
-		//do not follow any links
-		context.End("host missmatch," + referenceURI.Host + " vs " + currentURI.Host)
+		//Do not follow any links
+		context.End("Do not follow links")
 		return nil
 	}
 
