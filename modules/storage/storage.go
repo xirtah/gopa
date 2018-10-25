@@ -69,7 +69,7 @@ func (module StorageModule) Start(cfg *config.Config) {
 	switch config.Driver {
 	case "elasticsearch":
 		client := index.ElasticsearchClient{Config: config.Elastic}
-		handler := elastic.ElasticsearchStore{Client: &client}
+		handler := elastic.ElasticStore{Client: &client}
 		persist.RegisterKVHandler(handler)
 	//TODO: Consider removing boltdb as a storage module driver as it does not support concurrent connections
 	// case "boltdb":

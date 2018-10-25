@@ -4,15 +4,13 @@ import (
 	"encoding/json"
 	"runtime"
 
-	log "github.com/xirtah/gopa-framework/core/logger/seelog"
 	. "github.com/xirtah/gopa-framework/core/config"
 	"github.com/xirtah/gopa-framework/core/global"
-	api "github.com/xirtah/gopa-framework/core/http"
 	core "github.com/xirtah/gopa-framework/core/index"
+	log "github.com/xirtah/gopa-framework/core/logger/seelog"
 	"github.com/xirtah/gopa-framework/core/model"
 	"github.com/xirtah/gopa-framework/core/queue"
 	"github.com/xirtah/gopa-spider/modules/config"
-	"github.com/xirtah/gopa-spider/modules/index/ui"
 	common "github.com/xirtah/gopa-spider/modules/index/ui/common"
 )
 
@@ -47,18 +45,6 @@ func (module IndexModule) Start(cfg *Config) {
 
 	signalChannel = make(chan bool, 1)
 	client := core.ElasticsearchClient{Config: indexConfig.Elasticsearch}
-
-	//register UI
-	if indexConfig.UIConfig.Enabled {
-		ui := ui.UserUI{}
-		ui.Config = indexConfig.UIConfig
-		ui.SearchClient = &core.ElasticsearchClient{Config: indexConfig.Elasticsearch}
-		api.HandleUIMethod(api.GET, "/", ui.IndexPageAction)
-		api.HandleUIMethod(api.GET, "/m/", ui.MobileIndexPageAction)
-		api.HandleUIMethod(api.GET, "/ajax_more_item/", ui.AJAXMoreItemAction)
-		api.HandleUIMethod(api.GET, "/snapshot/:id", api.NeedPermission(model.PERMISSION_SNAPSHOT_VIEW, ui.GetSnapshotPayloadAction))
-		api.HandleUIMethod(api.GET, "/suggest/", ui.SuggestAction)
-	}
 
 	go func() {
 		defer func() {
