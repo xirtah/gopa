@@ -1,14 +1,15 @@
 package dispatch
 
 import (
-	log "github.com/xirtah/gopa-framework/core/logger/seelog"
+	"time"
+
 	cfg "github.com/xirtah/gopa-framework/core/config"
+	log "github.com/xirtah/gopa-framework/core/logger/seelog"
 	"github.com/xirtah/gopa-framework/core/model"
 	"github.com/xirtah/gopa-framework/core/queue"
 	"github.com/xirtah/gopa-framework/core/stats"
 	"github.com/xirtah/gopa-framework/core/util"
 	"github.com/xirtah/gopa-spider/modules/config"
-	"time"
 )
 
 // DispatchModule handle task dispatch, include new task and update task
@@ -193,6 +194,7 @@ func (module DispatchModule) Start(cfg *cfg.Config) {
 				push := stats.Stat("queue.fetch", "push")
 				if lastPop == pop || pop == push {
 					log.Tracef("fetch tasks stalled/finished, lastPop:%v,pop:%v,push:%v", lastPop, pop, push)
+					//TODO: Sameer, why do we do this?
 					err := queue.Push(config.DispatcherChannel, []byte("10s deplay"))
 					if err != nil {
 						log.Error(err)

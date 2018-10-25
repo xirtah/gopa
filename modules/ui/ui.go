@@ -30,14 +30,13 @@ import (
 	"path"
 	"path/filepath"
 
-	log "github.com/xirtah/gopa-framework/core/logger/seelog"
 	"github.com/gorilla/context"
 	. "github.com/xirtah/gopa-framework/core/config"
 	"github.com/xirtah/gopa-framework/core/global"
 	"github.com/xirtah/gopa-framework/core/http/router"
+	log "github.com/xirtah/gopa-framework/core/logger/seelog"
 	"github.com/xirtah/gopa-framework/core/util"
 	"github.com/xirtah/gopa-spider/modules/ui/common"
-	"github.com/xirtah/gopa-spider/modules/ui/public"
 )
 
 var router *httprouter.Router
@@ -163,8 +162,9 @@ func (module UIModule) Start(cfg *Config) {
 	//init admin ui
 	admin.InitUI()
 
+	//TODO: Clean up - remove commented out code
 	//init public ui
-	public.InitUI(adminConfig.AuthConfig)
+	//public.InitUI(adminConfig.AuthConfig)
 
 	//register websocket logger
 	//logger.RegisterWebsocketHandler(LoggerReceiver)
