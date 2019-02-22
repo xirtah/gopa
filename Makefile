@@ -13,14 +13,15 @@ ifeq "$(GOPATH)" ""
   $(error Please set the environment variable GOPATH before running `make`)
 endif
 
+#Add the GOPATH bin directory to the path file
+export PATH := $(PATH):$(GOPATH)/bin
+
 # Go environment
 CURDIR := $(shell pwd)
-OLDGOPATH:= $(GOPATH)
-NEWGOPATH:= $(CURDIR):$(CURDIR)/vendor:$(GOPATH)
 
 GO        := GO15VENDOREXPERIMENT="1" go
-GOBUILD  := GOPATH=$(NEWGOPATH) CGO_ENABLED=1  $(GO) build -ldflags -s
-GOTEST   := GOPATH=$(NEWGOPATH) CGO_ENABLED=1  $(GO) test -ldflags -s
+GOBUILD  := GOPATH=$(GOPATH) CGO_ENABLED=1  $(GO) build -ldflags -s
+GOTEST   := GOPATH=$(GOPATH) CGO_ENABLED=1  $(GO) test -ldflags -s
 
 ARCH      := "`uname -s`"
 LINUX     := "Linux"
@@ -33,8 +34,6 @@ PKGS=$(go list ./... | grep -v /vendor/)
 default: build
 
 build: config
-	@#echo $(GOPATH)
-	@echo $(NEWGOPATH)
 	$(GOBUILD) -o bin/gopa
 	@$(MAKE) restore-generated-file
 
@@ -130,47 +129,6 @@ config: init-version update-ui update-template-ui update-generated-file
 	@cp gopa.yml bin/gopa.yml
 	@cp -r config bin
 
-
-fetch-depends:
-	@echo "fetch dependencies"
-	$(GO) get github.com/cihub/seelog
-	$(GO) get github.com/PuerkitoBio/purell
-	$(GO) get github.com/clarkduvall/hyperloglog
-	$(GO) get github.com/PuerkitoBio/goquery
-	$(GO) get github.com/jmoiron/jsonq
-	$(GO) get github.com/gorilla/websocket
-	$(GO) get github.com/boltdb/bolt/...
-	$(GO) get github.com/alash3al/goemitter
-	$(GO) get github.com/bkaradzic/go-lz4
-	$(GO) get github.com/elgs/gojq
-	$(GO) get github.com/kardianos/osext
-	$(GO) get github.com/zeebo/sbloom
-	$(GO) get github.com/asdine/storm
-	$(GO) get github.com/xirtah/gopa-framework/vendor/github.com/julienschmidt/httprouter
-	$(GO) get github.com/rs/xid
-	$(GO) get github.com/seiflotfy/cuckoofilter
-	$(GO) get github.com/hashicorp/raft
-	$(GO) get github.com/hashicorp/raft-boltdb
-	$(GO) get github.com/jaytaylor/html2text
-	$(GO) get github.com/asdine/storm/codec/protobuf
-	$(GO) get github.com/ryanuber/go-glob
-	$(GO) get github.com/gorilla/sessions
-	$(GO) get github.com/mattn/go-sqlite3
-	$(GO) get github.com/jinzhu/gorm
-	$(GO) get github.com/stretchr/testify/assert
-	$(GO) get github.com/spf13/viper
-	$(GO) get -t github.com/RoaringBitmap/roaring
-	$(GO) get github.com/elastic/go-ucfg
-	$(GO) get github.com/jasonlvhit/gocron
-	$(GO) get github.com/quipo/statsd
-	$(GO) get github.com/go-sql-driver/mysql
-	$(GO) get github.com/jbowles/cld2_nlpt
-	$(GO) get github.com/mafredri/cdp
-	$(GO) get github.com/ararog/timeago
-	$(GO) get github.com/google/go-github/github
-	$(GO) get golang.org/x/oauth2
-
-
 dist: cross-build package
 
 dist-major-platform: all package
@@ -209,12 +167,13 @@ package-windows-platform:
 	cd bin && tar cfz ../bin/windows32.tar.gz   gopa-windows32.exe config gopa.yml stop.sh
 
 test:
-	go get -u github.com/kardianos/govendor
-	go get github.com/stretchr/testify/assert
-	govendor test +local
+	#go get -u github.com/kardianos/govendor
+	#go get github.com/stretchr/testify/assert
+	#govendor test +local
 	#$(GO) test -timeout 60s ./... --ignore ./vendor
 	#GORACE="halt_on_error=1" go test ./... -race -timeout 120s  --ignore ./vendor
 	#go test -bench=. -benchmem
+	$(GOTEST) -timeout 60s ./... --ignore ./vendor
 
 check:
 	$(GO)  get github.com/golang/lint/golint
