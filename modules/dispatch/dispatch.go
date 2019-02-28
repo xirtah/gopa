@@ -118,7 +118,7 @@ func (module DispatchModule) Start(cfg *cfg.Config) {
 				var err error
 				//get new task
 				if moduleConfig.NewTaskEnabled {
-					total, tasks, err = model.GetPendingNewFetchTasks(newOffset)
+					total, tasks, err = model.GetPendingNewFetchTasks()
 					if err != nil {
 						log.Error(err)
 					}
@@ -137,7 +137,7 @@ func (module DispatchModule) Start(cfg *cfg.Config) {
 
 				//get update task
 				if moduleConfig.UpdateTaskEnabled && (tasks == nil || total <= 0) {
-					total, tasks, err = model.GetPendingUpdateFetchTasks(updateOffset)
+					total, tasks, err = model.GetPendingUpdateFetchTasks()
 					if err != nil {
 						log.Error(err)
 					}
