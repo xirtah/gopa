@@ -112,54 +112,47 @@ func updateNextCheckTime(c *model.Context, current time.Time, steps []int, chang
 
 	//set one day as default next check time, unit is the second
 	var timeIntervalNext = 24 * 60 * 60
+	timeIntervalLast := getTimeInterval(taskLastCheck, taskNextCheck)
 
 	if lastSnapshotVer <= 1 && !b1 && !b2 {
 
 		timeIntervalNext = steps[0]
 
 	} else {
-		timeIntervalLast := getTimeInterval(taskLastCheck, taskNextCheck)
-
 		if changed {
 			arrTimeLength := len(steps)
-			for i := 1; i < arrTimeLength; i++ {
-				if timeIntervalLast > steps[0] {
-					timeIntervalNext = steps[0]
-					break
+			if timeIntervalLast == 0 {
+				//Default to the highest time interval when checking a site for the first time
+				timeIntervalNext = steps[0]
+			} else {
+				var timeIntervalSet = false
+				for i := 0; i < arrTimeLength-1; i++ {
+					//Find the next interval which is less than last interval
+					if timeIntervalLast > steps[i] {
+						timeIntervalNext = steps[i]
+						timeIntervalSet = true
+						break
+					}
 				}
-				if timeIntervalLast < steps[arrTimeLength-2] {
+				//Default to lowest value if no time interval was set
+				if !(timeIntervalSet) {
 					timeIntervalNext = steps[arrTimeLength-1]
-					break
 				}
-				if i+1 >= arrTimeLength {
-					timeIntervalNext = steps[arrTimeLength-1]
-					break
-				}
-				if timeIntervalLast <= steps[i-1] && timeIntervalLast > steps[i] {
+			}
+		} else {
+			var timeIntervalSet = false
+			arrTimeLength := len(steps)
+			for i := 0; i < arrTimeLength-1; i++ {
+				//Find the next interval which is greater than last interval
+				if timeIntervalLast < steps[i] {
 					timeIntervalNext = steps[i]
+					timeIntervalSet = true
 					break
 				}
 			}
-
-		} else {
-			arrTimeLength := len(steps)
-			for i := 1; i < arrTimeLength; i++ {
-				if timeIntervalLast < steps[0] {
-					timeIntervalNext = steps[0]
-					break
-				}
-				if timeIntervalLast > steps[arrTimeLength-2] {
-					timeIntervalNext = steps[arrTimeLength-1]
-					break
-				}
-				if i+1 >= arrTimeLength {
-					timeIntervalNext = steps[arrTimeLength-1]
-					break
-				}
-				if timeIntervalLast >= steps[i-1] && timeIntervalLast < steps[i] {
-					timeIntervalNext = steps[i]
-					break
-				}
+			//Default to highest value if no time interval was set
+			if !(timeIntervalSet) {
+				timeIntervalNext = steps[arrTimeLength-1]
 			}
 		}
 	}
