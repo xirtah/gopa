@@ -18,26 +18,24 @@ package joint
 
 import (
 	"fmt"
-	"github.com/xirtah/gopa-framework/core/model"
-	"github.com/stretchr/testify/assert"
-	"testing"
 	"time"
+
+	"testing"
+
+	"github.com/stretchr/testify/assert"
+	"github.com/xirtah/gopa-framework/core/model"
 )
 
 func TestInitGrabVelocityArr(t *testing.T) {
-	arrDecelerateSteps := initFetchRateArr("1m,10m,20m,30m,60m,1h30m,3h,6h,12h,24h,48h,168h,360h")
-	fmt.Println(arrDecelerateSteps)
-
-	arrAccelerateSteps := initFetchRateArr("24h,12h,6h,3h,1h30m,45m,20m,10m,1m")
-	fmt.Println(arrAccelerateSteps)
+	steps := initFetchRateArr("24h,12h,6h,3h,1h30m,45m,20m,10m,1m")
+	fmt.Println(steps)
 }
 
 func TestSetSnapNextCheckTime(t *testing.T) {
-	decelerateSteps := initFetchRateArr("1m,2m,5m,10m")
-	accelerateSteps := initFetchRateArr("10m,5m,2m,1m")
+	steps := initFetchRateArr("10m,5m,3m,2m,1m")
+	startStep := initFetchRateArr("3m")[0]
 
-	fmt.Println("decelerate,", decelerateSteps)
-	fmt.Println("accelerate,", accelerateSteps)
+	fmt.Println("steps,", steps)
 
 	toBeCharge := "2017-01-01 00:00:00.0000000 +0000 UTC"
 	timeLayout := "2006-01-02 15:04:05"
@@ -53,7 +51,7 @@ func TestSetSnapNextCheckTime(t *testing.T) {
 	context.Set(model.CONTEXT_TASK_NextCheck, tNow)
 	context.Set(model.CONTEXT_TASK_SnapshotVersion, 2)
 
-	updateNextCheckTime(&context, tNow, decelerateSteps, false)
+	updateNextCheckTime(&context, tNow, startStep, steps, false)
 	new1 := context.MustGetTime(model.CONTEXT_TASK_LastCheck)
 	new2 := context.MustGetTime(model.CONTEXT_TASK_NextCheck)
 	timeInterval := getTimeInterval(new1, new2)
@@ -67,7 +65,7 @@ func TestSetSnapNextCheckTime(t *testing.T) {
 	context.Set(model.CONTEXT_TASK_LastCheck, theTime)
 	context.Set(model.CONTEXT_TASK_NextCheck, tNow)
 	context.Set(model.CONTEXT_TASK_SnapshotVersion, 2)
-	updateNextCheckTime(&context, tNow, decelerateSteps, false)
+	updateNextCheckTime(&context, tNow, startStep, steps, false)
 	new1 = context.MustGetTime(model.CONTEXT_TASK_LastCheck)
 	new2 = context.MustGetTime(model.CONTEXT_TASK_NextCheck)
 	timeInterval = getTimeInterval(new1, new2)
@@ -82,7 +80,7 @@ func TestSetSnapNextCheckTime(t *testing.T) {
 	context.Set(model.CONTEXT_TASK_LastCheck, theTime)
 	context.Set(model.CONTEXT_TASK_NextCheck, tNow)
 	context.Set(model.CONTEXT_TASK_SnapshotVersion, 2)
-	updateNextCheckTime(&context, tNow, decelerateSteps, false)
+	updateNextCheckTime(&context, tNow, startStep, steps, false)
 	new1 = context.MustGetTime(model.CONTEXT_TASK_LastCheck)
 	new2 = context.MustGetTime(model.CONTEXT_TASK_NextCheck)
 	timeInterval = getTimeInterval(new1, new2)
@@ -96,7 +94,7 @@ func TestSetSnapNextCheckTime(t *testing.T) {
 	context.Set(model.CONTEXT_TASK_LastCheck, theTime)
 	context.Set(model.CONTEXT_TASK_NextCheck, tNow)
 	context.Set(model.CONTEXT_TASK_SnapshotVersion, 2)
-	updateNextCheckTime(&context, tNow, accelerateSteps, true)
+	updateNextCheckTime(&context, tNow, startStep, steps, true)
 	new1 = context.MustGetTime(model.CONTEXT_TASK_LastCheck)
 	new2 = context.MustGetTime(model.CONTEXT_TASK_NextCheck)
 	timeInterval = getTimeInterval(new1, new2)
@@ -108,7 +106,7 @@ func TestSetSnapNextCheckTime(t *testing.T) {
 	context.Set(model.CONTEXT_TASK_LastCheck, theTime)
 	context.Set(model.CONTEXT_TASK_NextCheck, tNow)
 	context.Set(model.CONTEXT_TASK_SnapshotVersion, 2)
-	updateNextCheckTime(&context, tNow, accelerateSteps, true)
+	updateNextCheckTime(&context, tNow, startStep, steps, true)
 	new1 = context.MustGetTime(model.CONTEXT_TASK_LastCheck)
 	new2 = context.MustGetTime(model.CONTEXT_TASK_NextCheck)
 	timeInterval = getTimeInterval(new1, new2)
@@ -120,7 +118,7 @@ func TestSetSnapNextCheckTime(t *testing.T) {
 	context.Set(model.CONTEXT_TASK_LastCheck, theTime)
 	context.Set(model.CONTEXT_TASK_NextCheck, tNow)
 	context.Set(model.CONTEXT_TASK_SnapshotVersion, 2)
-	updateNextCheckTime(&context, tNow, accelerateSteps, true)
+	updateNextCheckTime(&context, tNow, startStep, steps, true)
 	new1 = context.MustGetTime(model.CONTEXT_TASK_LastCheck)
 	new2 = context.MustGetTime(model.CONTEXT_TASK_NextCheck)
 	timeInterval = getTimeInterval(new1, new2)
@@ -132,7 +130,7 @@ func TestSetSnapNextCheckTime(t *testing.T) {
 	context.Set(model.CONTEXT_TASK_LastCheck, theTime)
 	context.Set(model.CONTEXT_TASK_NextCheck, tNow)
 	context.Set(model.CONTEXT_TASK_SnapshotVersion, 2)
-	updateNextCheckTime(&context, tNow, accelerateSteps, true)
+	updateNextCheckTime(&context, tNow, startStep, steps, true)
 	new1 = context.MustGetTime(model.CONTEXT_TASK_LastCheck)
 	new2 = context.MustGetTime(model.CONTEXT_TASK_NextCheck)
 	timeInterval = getTimeInterval(new1, new2)
@@ -144,7 +142,7 @@ func TestSetSnapNextCheckTime(t *testing.T) {
 	context.Set(model.CONTEXT_TASK_LastCheck, theTime)
 	context.Set(model.CONTEXT_TASK_NextCheck, tNow)
 	context.Set(model.CONTEXT_TASK_SnapshotVersion, 2)
-	updateNextCheckTime(&context, tNow, accelerateSteps, true)
+	updateNextCheckTime(&context, tNow, startStep, steps, true)
 	new1 = context.MustGetTime(model.CONTEXT_TASK_LastCheck)
 	new2 = context.MustGetTime(model.CONTEXT_TASK_NextCheck)
 	timeInterval = getTimeInterval(new1, new2)
