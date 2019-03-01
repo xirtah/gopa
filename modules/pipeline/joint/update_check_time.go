@@ -28,8 +28,8 @@ type UpdateCheckTimeJoint struct {
 	model.Parameters
 }
 
-const decelerateSteps model.ParaKey = "decelerate_steps"
-const accelerateSteps model.ParaKey = "accelerate_steps"
+const checking_steps model.ParaKey = "checking_steps"
+const starting_step model.ParaKey = "starting_step"
 
 func (this UpdateCheckTimeJoint) Name() string {
 	return "update_check_time"
@@ -38,6 +38,7 @@ func (this UpdateCheckTimeJoint) Name() string {
 var oneSecond, _ = time.ParseDuration("1s")
 
 func (this UpdateCheckTimeJoint) Process(c *model.Context) error {
+
 	snapshot := c.MustGet(model.CONTEXT_SNAPSHOT).(*model.Snapshot)
 
 	taskID := c.MustGetString(model.CONTEXT_TASK_ID)
@@ -49,15 +50,12 @@ func (this UpdateCheckTimeJoint) Process(c *model.Context) error {
 
 	lastSnapshotHash := c.GetStringOrDefault(model.CONTEXT_TASK_SnapshotHash, "")
 
-	//this control how page are updated, or update frequency, for example, by default, a page will be checked after 24h,
+	//this controls how pages are updated, or update frequency, for example, by default, a page will be checked after 24h,
 	//if the page doesn't change during this update fetch,
 	//the next fetch time will be changed to 48h later, which means it will automatically delayed from 24h to 48h,
 	//and if the page still not change after that 48h, then it will fetch the page again but 168h later
-	decelerateSteps := initFetchRateArr(this.GetStringOrDefault(decelerateSteps, "24h,48h,72h,168h,360h,720h"))
-	//you may consider this is reverse of decelerateSteps, by default a page will be updated after 24h,
-	//if the page changed, it will try to fetch after 12h, if still change, will shorten the period again, but 10m is minim wait time,
-	//but you can change the configuration
-	accelerateSteps := initFetchRateArr(this.GetStringOrDefault(accelerateSteps, "24h,12h,6h,3h,1h30m,45m,30m,20m,10m"))
+	steps := initFetchRateArr(this.GetStringOrDefault(checking_steps, "720h,360h,168h,72h,48h,24h,12h,6h,3h,1h30m,45m,30m,20m,10m"))
+	start_step := initFetchRateArr(this.GetStringOrDefault(starting_step, "24h"))[0] //Since it is only a single step, conver to array then take first value
 
 	current := time.Now().UTC()
 
@@ -65,7 +63,7 @@ func (this UpdateCheckTimeJoint) Process(c *model.Context) error {
 	if snapshot.Hash != "" && snapshot.Hash == lastSnapshotHash {
 
 		//increase next check time
-		updateNextCheckTime(c, current, decelerateSteps, false)
+		updateNextCheckTime(c, current, start_step, steps, false)
 
 		msg := fmt.Sprintf("content unchanged, snapshot with same hash: %s, %s", snapshot.Hash, taskUrl)
 
@@ -74,7 +72,7 @@ func (this UpdateCheckTimeJoint) Process(c *model.Context) error {
 		return nil
 	}
 
-	updateNextCheckTime(c, current, accelerateSteps, true)
+	updateNextCheckTime(c, current, start_step, steps, true)
 
 	return nil
 }
@@ -95,7 +93,7 @@ func initFetchRateArr(velocityStr string) []int {
 }
 
 //update the snapshot's next check time
-func updateNextCheckTime(c *model.Context, current time.Time, steps []int, changed bool) {
+func updateNextCheckTime(c *model.Context, current time.Time, startStep int, steps []int, changed bool) {
 
 	if len(steps) < 1 {
 		panic(errors.New("invalid steps"))
@@ -110,15 +108,21 @@ func updateNextCheckTime(c *model.Context, current time.Time, steps []int, chang
 
 	}
 
+	if !b1 {
+		panic("Task Last Check Undefined")
+	}
+	if !b2 {
+		panic("Task Next Check Undefined")
+	}
+
 	//set one day as default next check time, unit is the second
 	var timeIntervalNext = 24 * 60 * 60
-	timeIntervalLast := getTimeInterval(taskLastCheck, taskNextCheck)
 
-	if lastSnapshotVer <= 1 && !b1 && !b2 {
-
-		timeIntervalNext = steps[0]
+	if lastSnapshotVer <= 1 && taskLastCheck.IsZero() && taskNextCheck.IsZero() {
+		timeIntervalNext = startStep
 
 	} else {
+		timeIntervalLast := getTimeInterval(taskLastCheck, taskNextCheck)
 		if changed {
 			arrTimeLength := len(steps)
 			if timeIntervalLast == 0 {
@@ -142,7 +146,7 @@ func updateNextCheckTime(c *model.Context, current time.Time, steps []int, chang
 		} else {
 			var timeIntervalSet = false
 			arrTimeLength := len(steps)
-			for i := 0; i < arrTimeLength-1; i++ {
+			for i := arrTimeLength-1; i >= 0; i-- {
 				//Find the next interval which is greater than last interval
 				if timeIntervalLast < steps[i] {
 					timeIntervalNext = steps[i]
@@ -152,7 +156,7 @@ func updateNextCheckTime(c *model.Context, current time.Time, steps []int, chang
 			}
 			//Default to highest value if no time interval was set
 			if !(timeIntervalSet) {
-				timeIntervalNext = steps[arrTimeLength-1]
+				timeIntervalNext = steps[0]
 			}
 		}
 	}

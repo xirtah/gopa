@@ -9,7 +9,7 @@ path.certs: cert
 cookie_secret: YOUR-GOPA-SECRET
 
 allow_multi_instance: true
-max_num_of_instances: 5
+max_num_of_instances: 1
 
 tls_enabled: false
 
@@ -45,7 +45,7 @@ modules:
               enabled: true
               parameters:
                 follow_all_domain: false
-                follow_sub_domain: true
+                follow_sub_domain: false
                 max_filename_length: 1000
             - joint: url_filter
               enabled: true
@@ -136,7 +136,7 @@ modules:
             enabled: true
             parameters:
               follow_all_domain: false
-              follow_sub_domain: true
+              follow_sub_domain: false
               max_filename_length: 1000
           - joint: load_metadata
             enabled: true
@@ -220,7 +220,7 @@ modules:
             enabled: true
             parameters:
               follow_all_domain: false
-              follow_sub_domain: true
+              follow_sub_domain: false
               max_filename_length: 1000
           - joint: ignore_timeout
             parameters:
@@ -287,10 +287,10 @@ modules:
 
 - name: dispatch
   enabled: true
-  failure_retry: false
+  failure_retry: true
   new_task: true
-  update_task: false
-  max_concurrent_fetch_tasks: 1000
+  update_task: true
+  max_concurrent_fetch_tasks: 1
 
 - name: api
   enabled: true
@@ -319,8 +319,8 @@ modules:
   enabled: true
   driver: elasticsearch
   elasticsearch:
-    endpoint: http://192.168.1.117:9200
-    index_prefix: gopa1-
+    endpoint: http://127.0.0.1:9200
+    index_prefix: gopa-
     #username: elastic
     #password: changeme
 
@@ -335,8 +335,8 @@ modules:
     #logo: https://static-www.elastic.co/cn/assets/blt6050efb80ceabd47/elastic-logo (2).svg?q=294
     #favicon: https://www.elastic.co/favicon.ico
   elasticsearch:
-    endpoint: http://192.168.1.117:9200
-    index_prefix: gopa1-
+    endpoint: http://127.0.0.1:9200
+    index_prefix: gopa-
     username: elastic
     password: changeme
 
@@ -344,8 +344,8 @@ modules:
   enabled: true
   driver: elasticsearch
   elasticsearch:
-    endpoint: http://192.168.1.117:9200
-    index_prefix: gopa1-
+    endpoint: http://127.0.0.1:9200
+    index_prefix: gopa-
 #    username: elastic
 #    password: changeme
   #driver: sqlite
