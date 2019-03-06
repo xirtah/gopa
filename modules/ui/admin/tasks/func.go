@@ -3,6 +3,7 @@ package tasks
 import (
 	"bytes"
 	"fmt"
+
 	"github.com/xirtah/gopa-framework/core/model"
 	"github.com/xirtah/gopa-framework/core/util"
 )

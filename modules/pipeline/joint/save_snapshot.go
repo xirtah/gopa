@@ -18,8 +18,9 @@ package joint
 
 import (
 	"fmt"
-	log "github.com/xirtah/gopa-framework/core/logger/seelog"
+
 	"github.com/xirtah/gopa-framework/core/errors"
+	log "github.com/xirtah/gopa-framework/core/logger/seelog"
 	"github.com/xirtah/gopa-framework/core/model"
 	"github.com/xirtah/gopa-framework/core/persist"
 	"github.com/xirtah/gopa-framework/core/stats"
@@ -54,7 +55,7 @@ func (this SaveSnapshotToDBJoint) Process(c *model.Context) error {
 
 	//update task's snapshot, detect duplicated snapshot
 	if snapshot.Hash != "" && snapshot.Hash == previousSnapshotHash {
-		msg := fmt.Sprintf("content unchanged, snapshot with same hash: %s, %s, prev hash: %s,prev version: %s", snapshot.Hash, taskUrl, previousSnapshotHash, previousSnapshotVersion)
+		msg := fmt.Sprintf("content unchanged, snapshot with same hash: %s, %s, prev hash: %s,prev version: %d", snapshot.Hash, taskUrl, previousSnapshotHash, previousSnapshotVersion)
 		c.End(msg)
 		return nil
 	}

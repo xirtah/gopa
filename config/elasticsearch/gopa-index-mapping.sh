@@ -1,9 +1,9 @@
-printf "Deleting existing index\n"
+printf "Deleting existing gopa-index db\n"
 curl --user elastic:changeme -XDELETE "http://localhost:9200/gopa-index"
 printf "\n"
 printf "\n"
 
-printf "Creating new index\n"
+printf "Creating new gopa-index db\n"
 curl --user elastic:changeme -XPUT "http://localhost:9200/gopa-index" -H 'Content-Type: application/json' -d'
 {
   "mappings": {
@@ -167,6 +167,9 @@ curl --user elastic:changeme -XPUT "http://localhost:9200/gopa-index" -H 'Conten
               "type": "keyword",
               "ignore_above": 256
             },
+            "host" : {
+              "type": "keyword"
+            },
             "original_url": {
               "type": "keyword",
               "ignore_above": 256
@@ -201,12 +204,12 @@ curl --user elastic:changeme -XPUT "http://localhost:9200/gopa-index" -H 'Conten
 printf "\n"
 printf "\n"
 
-printf "Closing Index\n"
+printf "Closing gopa-index db\n"
 curl -XPOST "http://localhost:9200/gopa-index/_close"
 printf "\n"
 printf "\n"
 
-printf "Updating index settings\n"
+printf "Updating gopa-index db settings\n"
 curl --user elastic:changeme -XPUT "http://localhost:9200/gopa-index/_settings" -H 'Content-Type: application/json' -d'
 {
   "settings": {
@@ -248,7 +251,29 @@ curl --user elastic:changeme -XPUT "http://localhost:9200/gopa-index/_settings" 
 printf "\n"
 printf "\n"
 
-printf "Opening Index\n"
+printf "Opening gopa-index db\n"
 curl -XPOST "http://localhost:9200/gopa-index/_open"
+printf "\n"
+printf "\n"
+
+printf "Deleting existing gopa-task db\n"
+curl --user elastic:changeme -XDELETE "http://localhost:9200/gopa-task"
+printf "\n"
+printf "\n"
+
+printf "Creating new gopa-task db\n"
+curl --user elastic:changeme -XPUT "http://localhost:9200/gopa-task" -H 'Content-Type: application/json' -d'
+{
+  "mappings": {
+    "doc": {
+      "properties": {
+        "host": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    }
+  }
+}'
 printf "\n"
 printf "\n"

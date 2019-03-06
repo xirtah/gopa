@@ -37,3 +37,7 @@ sudo sysctl -w net.ipv4.conf.all.route_localnet=1
 
 #Test StanfordCoreNLPServer
 wget --post-data "Koalas are cool!" '192.168.1.13:9000/?properties={"annotators": "ner", "outputFormat":"json"}' -O -
+
+#Setup go path
+export GOPATH=$PWD 
+#where $pwd gopa
