@@ -27,7 +27,7 @@ import (
 	"github.com/xirtah/gopa-spider/modules/pipeline"
 	"github.com/xirtah/gopa-spider/modules/queue"
 	"github.com/xirtah/gopa-spider/modules/stats"
-	"github.com/xirtah/gopa-spider/modules/storage"
+	"github.com/xirtah/gopa-framework/modules/storage"
 	"github.com/xirtah/gopa-spider/modules/ui"
 )
 

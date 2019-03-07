@@ -26,7 +26,7 @@ import (
 	"github.com/xirtah/gopa-framework/core/global"
 	"github.com/xirtah/gopa-framework/core/util"
 	"github.com/xirtah/gopa-spider/modules/config"
-	"github.com/xirtah/gopa-spider/modules/storage"
+	"github.com/xirtah/gopa-framework/modules/storage"
 )
 
 func Test(t *testing.T) {
