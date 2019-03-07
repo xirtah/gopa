@@ -2,3 +2,4 @@ curl --user elastic:changeme -XPOST "http://localhost:9200/gopa-*/_delete_by_que
 {
 "query": {"match_all": {}},"size":10000
 }'
+printf "\n"
