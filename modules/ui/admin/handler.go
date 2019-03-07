@@ -2,13 +2,15 @@ package admin
 
 import (
 	"errors"
+	"fmt"
 	"net/http"
 
 	"github.com/xirtah/gopa-framework/core/global"
-	"github.com/xirtah/gopa-framework/core/http"
-	"github.com/xirtah/gopa-framework/core/http/router"
+	api "github.com/xirtah/gopa-framework/core/http"
+	httprouter "github.com/xirtah/gopa-framework/core/http/router"
 	"github.com/xirtah/gopa-framework/core/model"
 	"github.com/xirtah/gopa-framework/core/persist"
+	"github.com/xirtah/gopa-framework/core/util"
 	"github.com/xirtah/gopa-spider/modules/config"
 	"github.com/xirtah/gopa-spider/modules/ui/admin/console"
 	"github.com/xirtah/gopa-spider/modules/ui/admin/dashboard"
@@ -103,4 +105,53 @@ func (h AdminUI) UpdateSettingAction(w http.ResponseWriter, r *http.Request, _ h
 	o, _ := yaml.Marshal(global.Env().RuntimeConfig)
 
 	setting.Setting(w, r, string(o))
+}
+
+//TODO: Clean this up, it is a hack - we have this code duplicated in the gopa-ui project
+func (h AdminUI) RedirectHandler(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+	url := h.Get(r, "url", "")
+	http.Redirect(w, r, util.UrlDecode(url), 302)
+	return
+}
+
+//TODO: Clean this up, it is a hack - we have this code duplicated in the gopa-ui project
+func (h *AdminUI) GetSnapshotPayloadAction(w http.ResponseWriter, req *http.Request, ps httprouter.Params) {
+	id := ps.ByName("id")
+
+	snapshot, err := model.GetSnapshot(id)
+	if err != nil {
+		h.Error(w, err)
+		return
+	}
+
+	compressed := h.GetParameterOrDefault(req, "compressed", "true")
+	var bytes []byte
+	if compressed == "true" {
+		bytes, err = persist.GetCompressedValue(config.SnapshotBucketKey, []byte(id))
+	} else {
+		bytes, err = persist.GetValue(config.SnapshotBucketKey, []byte(id))
+	}
+
+	if err != nil {
+		h.Error(w, err)
+		return
+	}
+
+	if len(bytes) > 0 {
+		h.Write(w, bytes)
+
+		//add link rewrite
+		if util.ContainStr(snapshot.ContentType, "text/html") {
+			h.Write(w, []byte("<script language='JavaScript' type='text/javascript'>"))
+			h.Write(w, []byte(`var dom=document.createElement("div");dom.innerHTML='<div style="overflow: hidden;z-index: 99999999999999999;width:100%;height:18px;position: absolute top:1px;background:#ebebeb;font-size: 12px;text-align:center;">`))
+			h.Write(w, []byte(fmt.Sprintf(`<a href="/"><img border=0 style="float:left;height:18px" src="%s"></a><span style="font-size: 12px;">Saved by Gopa, %v, <a title="%v" href="%v">View original</a></span></div>';var first=document.body.firstChild;  document.body.insertBefore(dom,first);`, nil, snapshot.Created, snapshot.Url, snapshot.Url)))
+			//			h.Write(w, []byte(fmt.Sprintf(`<a href="/"><img border=0 style="float:left;height:18px" src="%s"></a><span style="font-size: 12px;">Saved by Gopa, %v, <a title="%v" href="%v">View original</a></span></div>';var first=document.body.firstChild;  document.body.insertBefore(dom,first);`, h.Config.SiteLogo, snapshot.Created, snapshot.Url, snapshot.Url)))
+			h.Write(w, []byte("</script>"))
+			h.Write(w, []byte("<script src=\"/static/assets/js/snapshot_footprint.js?v=1\"></script> "))
+		}
+		return
+	}
+
+	h.Error404(w)
+
 }

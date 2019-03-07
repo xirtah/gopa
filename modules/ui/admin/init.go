@@ -38,6 +38,7 @@ func InitUI() {
 
 	api.HandleUIMethod(api.GET, "/screenshot/:id", ui.GetScreenshotAction)
 
+	//Admin
 	api.HandleUIMethod(api.GET, "/admin/", api.NeedPermission(model.PERMISSION_ADMIN_MINIMAL, ui.DashboardAction))
 	api.HandleUIMethod(api.POST, "/admin/setting/", api.NeedPermission(model.PERMISSION_ADMIN_MINIMAL, ui.UpdateSettingAction))
 	api.HandleUIMethod(api.GET, "/admin/dashboard/", api.NeedPermission(model.PERMISSION_ADMIN_MINIMAL, ui.DashboardAction))
@@ -47,6 +48,10 @@ func InitUI() {
 
 	api.HandleUIFunc("/admin/explore/", ui.ExplorePageAction)
 	api.HandleUIFunc("/admin/setting/", ui.SettingPageAction)
+
+	//Snapshot
+	api.HandleUIMethod(api.GET, "/snapshot/:id", api.NeedPermission(model.PERMISSION_SNAPSHOT_VIEW, ui.GetSnapshotPayloadAction))
+	api.HandleUIMethod(api.GET, "/redirect/", ui.RedirectHandler)
 
 	//Ajax
 	ajax := ajax.Ajax{}
