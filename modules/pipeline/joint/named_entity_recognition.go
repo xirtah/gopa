@@ -8,8 +8,8 @@ package joint
 import (
 	"encoding/json"
 
-	log "github.com/xirtah/gopa-framework/core/logger/seelog"
 	"github.com/xirtah/gopa-framework/core/global"
+	log "github.com/xirtah/gopa-framework/core/logger/seelog"
 	"github.com/xirtah/gopa-framework/core/model"
 	"github.com/xirtah/gopa-framework/core/util"
 )
@@ -45,7 +45,7 @@ func (joint NamedEntityRecognitionJoint) Process(context *model.Context) error {
 
 	if err != nil {
 		//Do nothing
-		log.Warn("Failed to get response from coreNLP server")
+		log.Warn("Failed to get response from coreNLP server, URL:", url)
 	} else {
 		log.Debug("Response from coreNLP: ", string(response.Body))
 		var result NERResultCoreNLP
