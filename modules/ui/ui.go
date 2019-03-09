@@ -34,6 +34,7 @@ import (
 	. "github.com/xirtah/gopa-framework/core/config"
 	"github.com/xirtah/gopa-framework/core/global"
 	"github.com/xirtah/gopa-framework/core/http/router"
+	"github.com/xirtah/gopa-framework/core/logger"
 	log "github.com/xirtah/gopa-framework/core/logger/seelog"
 	"github.com/xirtah/gopa-framework/core/util"
 	"github.com/xirtah/gopa-spider/modules/ui/common"
@@ -162,12 +163,12 @@ func (module UIModule) Start(cfg *Config) {
 	//init admin ui
 	admin.InitUI()
 
+	//register websocket logger
+	logger.RegisterWebsocketHandler(LoggerReceiver)
+
 	//TODO: Clean up - remove commented out code
 	//init public ui
 	//public.InitUI(adminConfig.AuthConfig)
-
-	//register websocket logger
-	//logger.RegisterWebsocketHandler(LoggerReceiver)
 
 	go func() {
 		module.internalStart(cfg)
