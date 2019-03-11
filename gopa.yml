@@ -158,6 +158,12 @@ modules:
               timeout_in_seconds: 100
                #proxy: "socks5://127.0.0.1:1080"
                #cookie: ""
+          - joint: parse_pdf
+            enabled: true
+            parameters:
+              accepted_content_type:
+              - application/octet-stream
+              - application/pdf
           - joint: parse
             enabled: true
             parameters:
@@ -240,6 +246,12 @@ modules:
               timeout_in_seconds: 100
               #proxy: "socks5://127.0.0.1:1080"
               #cookie: ""
+          - joint: parse_pdf
+            enabled: true
+            parameters:
+              accepted_content_type:
+              - application/octet-stream
+              - application/pdf
           - joint: parse
             enabled: true
             parameters:

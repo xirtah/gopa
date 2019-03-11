@@ -43,6 +43,7 @@ func InitJoints() {
 	model.RegisterPipeJoint(joint.IgnoreTimeoutJoint{})
 	model.RegisterPipeJoint(joint.LoadMetadataJoint{})
 	model.RegisterPipeJoint(joint.ParsePageJoint{})
+	model.RegisterPipeJoint(joint.ParsePDFJoint{})
 	model.RegisterPipeJoint(joint.SaveSnapshotToDBJoint{})
 	model.RegisterPipeJoint(joint.SaveSnapshotToFileSystemJoint{})
 	model.RegisterPipeJoint(joint.InitTaskJoint{})
