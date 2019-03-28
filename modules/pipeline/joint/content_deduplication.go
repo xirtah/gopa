@@ -2,9 +2,10 @@ package joint
 
 import (
 	"fmt"
-	log "github.com/xirtah/gopa-framework/core/logger/seelog"
+
 	"github.com/xirtah/gopa-framework/core/errors"
 	"github.com/xirtah/gopa-framework/core/filter"
+	log "github.com/xirtah/gopa-framework/core/logger/seelog"
 	"github.com/xirtah/gopa-framework/core/model"
 	"github.com/xirtah/gopa-spider/modules/config"
 )
@@ -32,7 +33,7 @@ func (joint ContentDeduplicationJoint) Process(c *model.Context) error {
 		taskID := c.MustGetString(model.CONTEXT_TASK_ID)
 		snapshot.TaskID = taskID
 
-		exist, depTaskID, depSnapshotId, depUrl := checkByHash(snapshot, c)
+		exist, depTaskID, depSnapshotId, depUrl := checkBySimHash(snapshot, c)
 
 		msg := fmt.Sprintf("same content hash found, %s, %s, %s, duplicated with task: %s, snapshotID: %s, url: %s", taskID, url, snapshot.Hash, depTaskID, depSnapshotId, depUrl)
 
@@ -47,20 +48,20 @@ func (joint ContentDeduplicationJoint) Process(c *model.Context) error {
 	return nil
 }
 
-func checkByHash(snapshot *model.Snapshot, c *model.Context) (bool, string, string, string) {
+func checkBySimHash(snapshot *model.Snapshot, c *model.Context) (bool, string, string, string) {
 
-	hash := snapshot.Hash
+	simhash := snapshot.SimHash
 
 	//Check local hash first
 	if c.GetBool("check_filter", false) {
-		exist, _ := filter.CheckThenAdd(config.ContentHashFilter, []byte(hash))
+		exist, _ := filter.CheckThenAdd(config.ContentHashFilter, []byte(simhash))
 		if exist {
 			return true, "", "local_filter_cache", ""
 		}
 	}
 
 	//Check hash from db
-	items, err := model.GetSnapshotByField("hash", hash)
+	items, err := model.GetSnapshotByField("sim_hash", simhash)
 
 	if err != nil {
 		panic(err)
