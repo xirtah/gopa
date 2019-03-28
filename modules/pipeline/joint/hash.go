@@ -17,8 +17,11 @@ limitations under the License.
 package joint
 
 import (
+	"bytes"
 	"crypto/sha1"
 	"fmt"
+
+	"github.com/PuerkitoBio/goquery"
 	"github.com/xirtah/gopa-framework/core/model"
 )
 
@@ -34,8 +37,26 @@ func (joint HashJoint) Process(context *model.Context) error {
 
 	snapshot := context.MustGet(model.CONTEXT_SNAPSHOT).(*model.Snapshot)
 
+	//Load document
+	fileContent := snapshot.Payload
+
+	doc, err := goquery.NewDocumentFromReader(bytes.NewReader(fileContent))
+	if err != nil {
+		panic(err)
+	}
+
+	//Remove href tags
+	doc.Find("a").Remove()
+
+	//Following code is just for hashing
+	html, err := doc.Html()
+
+	if err != nil {
+		panic(err)
+	}
+
 	h := sha1.New()
-	h.Write(snapshot.Payload)
+	h.Write([]byte(html)) //Get hash of snapshot with href removed
 	bs := h.Sum(nil)
 
 	snapshot.Hash = fmt.Sprintf("%x", bs)
