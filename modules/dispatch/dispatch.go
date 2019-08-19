@@ -48,21 +48,21 @@ func dispatchTasks(name string, tasks []model.Task, offset *time.Time) {
 		}
 
 		//TODO: Review - I am not sure if this works - SAMEER
-		runner := "fetch"
-		if v.HostConfig == nil {
-			//assign pipeline config
-			config, _ := model.GetHostConfigByHostAndUrl(runner, v.Host, v.Url)
-			if config != nil {
-				v.HostConfig = config
-				context.Set(model.CONTEXT_TASK_Cookies, v.HostConfig.Cookies)
-				context.Set(model.CONTEXT_TASK_PipelineConfigID, v.HostConfig.PipelineID)
-				log.Trace("get host config: ", util.ToJson(config, true))
-			}
-		}
+		// runner := "fetch"
+		// if v.HostConfig == nil {
+		// 	//assign pipeline config
+		// 	config, _ := model.GetHostConfigByHostAndUrl(runner, v.Host, v.Url)
+		// 	if config != nil {
+		// 		v.HostConfig = config
+		// 		context.Set(model.CONTEXT_TASK_Cookies, v.HostConfig.Cookies)
+		// 		context.Set(model.CONTEXT_TASK_PipelineConfigID, v.HostConfig.PipelineID)
+		// 		log.Trace("get host config: ", util.ToJson(config, true))
+		// 	}
+		// }
 
-		if v.PipelineConfigID != "" {
-			context.Set(model.CONTEXT_TASK_PipelineConfigID, v.PipelineConfigID)
-		}
+		// if v.PipelineConfigID != "" {
+		// 	context.Set(model.CONTEXT_TASK_PipelineConfigID, v.PipelineConfigID)
+		// }
 
 		//Update task status
 		v.Status = model.TaskPendingFetch
