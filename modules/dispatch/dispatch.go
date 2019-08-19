@@ -37,9 +37,7 @@ func dispatchTasks(name string, tasks []model.Task, offset *time.Time) {
 	for _, v := range tasks {
 		log.Trace("get task from db, ", v.ID)
 
-		if v.Status == model.TaskPendingFetch {
-			v.NextCheck = nextCheck //in case the task dies during processing set the next check to be 1 hour from now
-		}
+		v.NextCheck = nextCheck //in case the task dies during processing set the next check time
 
 		context := model.Context{}
 		context.Set(model.CONTEXT_TASK_ID, v.ID)
