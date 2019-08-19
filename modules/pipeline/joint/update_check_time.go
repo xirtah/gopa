@@ -18,10 +18,11 @@ package joint
 
 import (
 	"fmt"
-	"github.com/xirtah/gopa-framework/core/errors"
-	"github.com/xirtah/gopa-framework/core/model"
 	"strings"
 	"time"
+
+	"github.com/xirtah/gopa-framework/core/errors"
+	"github.com/xirtah/gopa-framework/core/model"
 )
 
 type UpdateCheckTimeJoint struct {
@@ -118,7 +119,7 @@ func updateNextCheckTime(c *model.Context, current time.Time, startStep int, ste
 	//set one day as default next check time, unit is the second
 	var timeIntervalNext = 24 * 60 * 60
 
-	if lastSnapshotVer <= 1 && taskLastCheck.IsZero() && taskNextCheck.IsZero() {
+	if lastSnapshotVer <= 1 && taskLastCheck.IsZero() {
 		timeIntervalNext = startStep
 
 	} else {
@@ -126,8 +127,8 @@ func updateNextCheckTime(c *model.Context, current time.Time, startStep int, ste
 		if changed {
 			arrTimeLength := len(steps)
 			if timeIntervalLast == 0 {
-				//Default to the highest time interval when checking a site for the first time
-				timeIntervalNext = steps[0]
+				//Default to the starting interval when checking a site that has no previous interval
+				timeIntervalNext = startStep
 			} else {
 				var timeIntervalSet = false
 				for i := 0; i < arrTimeLength-1; i++ {
@@ -146,7 +147,7 @@ func updateNextCheckTime(c *model.Context, current time.Time, startStep int, ste
 		} else {
 			var timeIntervalSet = false
 			arrTimeLength := len(steps)
-			for i := arrTimeLength-1; i >= 0; i-- {
+			for i := arrTimeLength - 1; i >= 0; i-- {
 				//Find the next interval which is greater than last interval
 				if timeIntervalLast < steps[i] {
 					timeIntervalNext = steps[i]

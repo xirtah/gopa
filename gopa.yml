@@ -194,8 +194,8 @@ modules:
           - joint: update_check_time
             enabled: true
             parameters:
-              decelerate_steps: "24h,48h,72h,168h,360h,720h"
-              accelerate_steps: "24h,12h,6h,3h,1h30m,45m,30m,20m,10m"
+              checking_steps: "720h,360h,168h,72h,48h,24h,12h,6h,3h,1h30m,45m,30m,20m,10m"
+              starting_step: "24h"
           - joint: lang_detect
             enabled: true
           - joint: save_snapshot_fs
@@ -278,8 +278,8 @@ modules:
           - joint: update_check_time
             enabled: true
             parameters:
-              decelerate_steps: "24h,48h,72h,168h,360h,720h"
-              accelerate_steps: "24h,12h,6h,3h,1h30m,45m,30m,20m,10m"
+              checking_steps: "720h,360h,168h,72h,48h,24h,12h,6h,3h,1h30m,45m,30m,20m,10m"
+              starting_step: "24h"
           - joint: lang_detect
             enabled: true
           - joint: save_snapshot_fs

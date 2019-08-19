@@ -31,12 +31,14 @@ func (module DispatchModule) Name() string {
 var signalChannel chan bool
 
 func dispatchTasks(name string, tasks []model.Task, offset *time.Time) {
+
+	nextCheck := time.Now().UTC().Add(time.Hour * time.Duration(1)) //default next check is 1 hour, set this in case the queue crashes
+
 	for _, v := range tasks {
 		log.Trace("get task from db, ", v.ID)
 
 		if v.Status == model.TaskPendingFetch {
-			log.Tracef("task %v alrady in fetch, ingore", v.ID)
-			continue
+			v.NextCheck = nextCheck //in case the task dies during processing set the next check to be 1 hour from now
 		}
 
 		context := model.Context{}
@@ -47,6 +49,7 @@ func dispatchTasks(name string, tasks []model.Task, offset *time.Time) {
 			offset = &v.Created
 		}
 
+		//TODO: Review - I am not sure if this works - SAMEER
 		runner := "fetch"
 		if v.HostConfig == nil {
 			//assign pipeline config
@@ -116,6 +119,7 @@ func (module DispatchModule) Start(cfg *cfg.Config) {
 				var total int
 				var tasks []model.Task
 				var err error
+
 				//get new task
 				if moduleConfig.NewTaskEnabled {
 					total, tasks, err = model.GetPendingNewFetchTasks()
