@@ -18,11 +18,10 @@ package joint
 
 import (
 	"fmt"
-	"strings"
-	"time"
-
 	"github.com/xirtah/gopa-framework/core/errors"
 	"github.com/xirtah/gopa-framework/core/model"
+	"strings"
+	"time"
 )
 
 type UpdateCheckTimeJoint struct {
@@ -100,14 +99,8 @@ func updateNextCheckTime(c *model.Context, current time.Time, startStep int, ste
 		panic(errors.New("invalid steps"))
 	}
 
-	lastSnapshotHash := c.GetStringOrDefault(model.CONTEXT_TASK_SnapshotHash, "")
-	lastSnapshotVer := c.GetIntOrDefault(model.CONTEXT_TASK_SnapshotVersion, 0)
 	taskLastCheck, b1 := c.GetTime(model.CONTEXT_TASK_LastCheck)
 	taskNextCheck, b2 := c.GetTime(model.CONTEXT_TASK_NextCheck)
-
-	if lastSnapshotHash == "" {
-
-	}
 
 	if !b1 {
 		panic("Task Last Check Undefined")
@@ -116,38 +109,31 @@ func updateNextCheckTime(c *model.Context, current time.Time, startStep int, ste
 		panic("Task Next Check Undefined")
 	}
 
-	//set one day as default next check time, unit is the second
-	var timeIntervalNext = 24 * 60 * 60
+	//set the default next check time as the starting step
+	timeIntervalNext := startStep
 
-	if lastSnapshotVer <= 1 && taskLastCheck.IsZero() {
-		timeIntervalNext = startStep
-
-	} else {
+	//If the task has already been checked once determine the new next check value
+	if !(taskLastCheck.IsZero()) {
 		timeIntervalLast := getTimeInterval(taskLastCheck, taskNextCheck)
+		var timeIntervalSet = false
+		arrTimeLength := len(steps)
+		
 		if changed {
-			arrTimeLength := len(steps)
-			if timeIntervalLast == 0 {
-				//Default to the starting interval when checking a site that has no previous interval
-				timeIntervalNext = startStep
-			} else {
-				var timeIntervalSet = false
-				for i := 0; i < arrTimeLength-1; i++ {
-					//Find the next interval which is less than last interval
-					if timeIntervalLast > steps[i] {
-						timeIntervalNext = steps[i]
-						timeIntervalSet = true
-						break
-					}
-				}
-				//Default to lowest value if no time interval was set
-				if !(timeIntervalSet) {
-					timeIntervalNext = steps[arrTimeLength-1]
+			for i := 0; i < arrTimeLength-1; i++ {
+				//Find the next interval which is less than last interval
+				if timeIntervalLast > steps[i] {
+					timeIntervalNext = steps[i]
+					timeIntervalSet = true
+					break
 				}
 			}
-		} else {
-			var timeIntervalSet = false
-			arrTimeLength := len(steps)
-			for i := arrTimeLength - 1; i >= 0; i-- {
+			
+			//Default to lowest value if no time interval was set
+			if !(timeIntervalSet) {
+				timeIntervalNext = steps[arrTimeLength-1]
+			}
+		} else {			
+			for i := arrTimeLength-1; i >= 0; i-- {
 				//Find the next interval which is greater than last interval
 				if timeIntervalLast < steps[i] {
 					timeIntervalNext = steps[i]
@@ -155,6 +141,7 @@ func updateNextCheckTime(c *model.Context, current time.Time, startStep int, ste
 					break
 				}
 			}
+			
 			//Default to highest value if no time interval was set
 			if !(timeIntervalSet) {
 				timeIntervalNext = steps[0]
