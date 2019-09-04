@@ -22,10 +22,9 @@ func (joint ContentDeduplicationJoint) Name() string {
 
 // Process the content hash Deduplication
 func (joint ContentDeduplicationJoint) Process(c *model.Context) error {
-	//task := c.MustGet(model.CONTEXT_TASK).(*model.Task)
 	snapshot := c.MustGet(model.CONTEXT_SNAPSHOT).(*model.Snapshot)
 	url := c.MustGetString(model.CONTEXT_TASK_URL)
-	if snapshot.Hash != "" {
+	if snapshot.Hash != "" || c.MustGetInt(model.CONTEXT_TASK_Status) != model.TaskRedirected {
 
 		log.Trace("check content deduplication, ", url)
 
