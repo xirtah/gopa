@@ -24,7 +24,8 @@ func (joint ContentDeduplicationJoint) Name() string {
 func (joint ContentDeduplicationJoint) Process(c *model.Context) error {
 	snapshot := c.MustGet(model.CONTEXT_SNAPSHOT).(*model.Snapshot)
 	url := c.MustGetString(model.CONTEXT_TASK_URL)
-	if snapshot.Hash != "" || c.MustGetInt(model.CONTEXT_TASK_Status) != model.TaskRedirected {
+	status := c.MustGetInt(model.CONTEXT_TASK_Status)
+	if snapshot.Hash != "" && status != model.TaskRedirected {
 
 		log.Trace("check content deduplication, ", url)
 
